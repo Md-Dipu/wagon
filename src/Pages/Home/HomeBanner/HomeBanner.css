@@ -1,0 +1,31 @@
+.niche-home-banner {
+    background-image: url(https://i.ibb.co/jR9VLx4/home-banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    min-height: 100vh;
+}
+
+.niche-home-banner-title {
+    font-size: 3.5rem;
+    margin-bottom: 2.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .niche-home-banner-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .niche-home-banner-title {
+        font-size: 2rem;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.niche-home-banner-btn {
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+}
