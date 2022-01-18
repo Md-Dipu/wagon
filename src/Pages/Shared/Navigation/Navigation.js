@@ -5,11 +5,11 @@ import './Navigation.css';
 
 const Navigation = () => {
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar variant="dark" expand="lg" className="niche-navbar">
             <Container>
                 <Navbar.Brand as={NavLink} to="/">Wagon</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Toggle aria-controls="niche-navbar-nav" />
+                <Navbar.Collapse id="niche-navbar-nav">
                     <Nav className="mx-auto">
                         <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                         <Nav.Link as={NavLink} to="/about-us">About Us</Nav.Link>
