@@ -12,6 +12,12 @@
 }
 
 /* Navigation */
+.niche-navbar .niche-nav-btn {
+    color: #363636;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
 .niche-nav-btn:hover {
     color: white;
     background-color: #3d73c5;
