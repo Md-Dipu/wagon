@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const port = process.env.PORT || 5000;
 
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient, ObjectId } = require("mongodb");
 const uri = process.env.DB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -15,10 +15,32 @@ app.use(express.json());
 async function run() {
     try {
         await client.connect();
-        console.log('Connected with MongoDB Databese');
+        const database = client.db('niche_product_website');
+        const apartmentCollection = database.collection('apartments');
+
+        // get apartments
+        app.get('/apartments', async (req, res) => {
+            const { page = 0, limit = 0 } = req.query;
+            let cursor;
+            if (!limit) {
+                cursor = apartmentCollection.find({}).skip(limit * page).limit(limit);
+            } else {
+                cursor = apartmentCollection.find({});
+            }
+            const result = await cursor.toArray();
+            res.send(result);
+        });
+
+        // get single apartment
+        app.get('/apartments/:apartmentId', async (req, res) => {
+            const { apartmentId } = req.params;
+            const query = { _id: ObjectId(apartmentId) };
+            const result = await apartmentCollection.findOne(query);
+            res.send(result);
+        });
     }
     finally {
-        await client.close();
+        // await client.close();
     }
 }
 
