@@ -20,10 +20,10 @@ async function run() {
 
         // get apartments
         app.get('/apartments', async (req, res) => {
-            const { page = 0, limit = 0 } = req.query;
+            const { page = 1, limit = 0 } = req.query;
             let cursor;
-            if (!limit) {
-                cursor = apartmentCollection.find({}).skip(limit * page).limit(limit);
+            if (limit) {
+                cursor = apartmentCollection.find({}).skip(+limit * (+page - 1)).limit(+limit);
             } else {
                 cursor = apartmentCollection.find({});
             }
@@ -37,6 +37,13 @@ async function run() {
             const query = { _id: ObjectId(apartmentId) };
             const result = await apartmentCollection.findOne(query);
             res.send(result);
+        });
+
+        // post apartment
+        app.post('/apartments', async (req, res) => {
+            const newApartment = req.body;
+            const result = await apartmentCollection.insertOne(newApartment);
+            res.json(result);
         });
     }
     finally {
