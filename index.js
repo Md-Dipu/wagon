@@ -45,6 +45,14 @@ async function run() {
             const result = await apartmentCollection.insertOne(newApartment);
             res.json(result);
         });
+
+        // delete apartment
+        app.delete('/apartments/:apartmentId', async (req, res) => {
+            const { apartmentId } = req.params;
+            const query = { _id: ObjectId(apartmentId) };
+            const result = await apartmentCollection.deleteOne(query);
+            res.send(result);
+        });
     }
     finally {
         // await client.close();
