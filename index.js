@@ -21,14 +21,13 @@ async function run() {
         // get apartments
         app.get('/apartments', async (req, res) => {
             const { page = 1, limit = 0 } = req.query;
-            let cursor;
+            let cursor = apartmentCollection.find({});
+            const count = await cursor.count();
             if (limit) {
-                cursor = apartmentCollection.find({}).skip(+limit * (+page - 1)).limit(+limit);
-            } else {
-                cursor = apartmentCollection.find({});
+                cursor = cursor.skip(+limit * (+page - 1)).limit(+limit);
             }
-            const result = await cursor.toArray();
-            res.send(result);
+            const results = await cursor.toArray();
+            res.send({ count, results });
         });
 
         // get single apartment
