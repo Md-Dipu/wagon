@@ -1,0 +1,26 @@
+.niche-footer-title::before {
+    content: "";
+    display: inline-block;
+    border-bottom: 2px solid darkgreen;
+    width: 50px;
+    margin-right: -50px;
+    margin-bottom: -15px;
+}
+
+/* Quick links */
+.niche-footer-quick-links {
+    padding-left: 0;
+}
+
+.niche-footer-quick-links li {
+    list-style: none;
+}
+
+.niche-footer-quick-links li a {
+    text-decoration: none;
+}
+
+.niche-footer-quick-links li a:hover {
+    color: darkorange !important;
+    text-decoration: underline;
+}
