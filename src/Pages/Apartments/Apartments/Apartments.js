@@ -1,8 +1,7 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
 import useWindowDimensions from '../../../Hooks/useWindowDimensions';
-import Apartment from '../../Shared/Apartment/Apartment';
 import Navigation from '../../Shared/Navigation/Navigation';
+import ApartmentsContainer from '../ApartmentsContainer/ApartmentsContainer';
 
 const Apartments = () => {
     const [apartments, setApartments] = React.useState([]);
@@ -10,6 +9,7 @@ const Apartments = () => {
 
     const { deviceWidth } = useWindowDimensions();
 
+    // limit depends on windows/devices width
     React.useEffect(() => {
         if (deviceWidth >= 992) {
             setLimit(15);
@@ -30,16 +30,8 @@ const Apartments = () => {
     return (
         <>
             <Navigation />
-            <div className="bg-dark d-lg-block d-none" style={{ height: 56 }}></div>
-            <Container className="my-4">
-                <Row className="g-4">
-                    {apartments.map(apartment =>
-                        <Col xs={12} md={6} lg={4} key={apartment._id}>
-                            <Apartment apartment={apartment} />
-                        </Col>
-                    )}
-                </Row>
-            </Container>
+            <div className="bg-dark d-lg-block d-none" style={{ height: 56, marginBottom: 50 }}></div>
+            <ApartmentsContainer apartments={apartments} />
         </>
     );
 };
