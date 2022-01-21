@@ -27,7 +27,7 @@ const HomeApartments = () => {
                         </Col>
                     )}
                     <Col xs={12} md={6} lg={4} key={apartments.length}>
-                        <div className="d-flex justify-content-center align-items-center" style={{ height: '100%', backgroundImage: 'url(https://i.ibb.co/qR0wvgK/home-show-more.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }}>
+                        <div className="d-flex justify-content-center align-items-center" style={{ height: '100%', minHeight: 350, backgroundImage: 'url(https://i.ibb.co/qR0wvgK/home-show-more.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }}>
                             <Button as={Link} to="/apartments" variant="outline-warning" className="d-block rounded-pill text-uppercase">Show more</Button>
                         </div>
                     </Col>
