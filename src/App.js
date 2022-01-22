@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ApartmentDetails from "./Pages/ApartmentDetails/ApartmentDetails/ApartmentDetails";
 import Apartments from "./Pages/Apartments/Apartments/Apartments";
 import Home from "./Pages/Home/Home/Home";
-import Footer from "./Pages/Shared/Footer/Footer";
 
 const App = () => {
     return (
@@ -18,7 +17,6 @@ const App = () => {
                     <ApartmentDetails />
                 </Route>
             </Switch>
-            <Footer />
         </Router>
     );
 }

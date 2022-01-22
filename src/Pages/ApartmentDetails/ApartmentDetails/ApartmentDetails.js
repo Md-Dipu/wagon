@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import BuyNowModal from '../BuyNowModal/BuyNowModal';
 import DetailsBanner from '../DetailsBanner/DetailsBanner';
@@ -32,6 +33,7 @@ const ApartmentDetails = () => {
                 showModal={setShowModal}
             />
             <SpecialContact />
+            <Footer />
             <BuyNowModal
                 show={showModal}
                 onCloseModal={() => setShowModal(false)}

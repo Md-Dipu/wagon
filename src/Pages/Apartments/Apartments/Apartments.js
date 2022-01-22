@@ -1,5 +1,6 @@
 import React from 'react';
 import useWindowDimensions from '../../../Hooks/useWindowDimensions';
+import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import ApartmentsContainer from '../ApartmentsContainer/ApartmentsContainer';
 
@@ -32,6 +33,7 @@ const Apartments = () => {
             <Navigation />
             <div className="bg-dark d-lg-block d-none" style={{ height: 56, marginBottom: 50 }}></div>
             <ApartmentsContainer apartments={apartments} />
+            <Footer />
         </>
     );
 };
