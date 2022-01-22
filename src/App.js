@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ApartmentDetails from "./Pages/ApartmentDetails/ApartmentDetails/ApartmentDetails";
 import Apartments from "./Pages/Apartments/Apartments/Apartments";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home/Home";
 
 const App = () => {
@@ -15,6 +16,9 @@ const App = () => {
                 </Route>
                 <Route path="/apartments/:apartmentId">
                     <ApartmentDetails />
+                </Route>
+                <Route path="/dashboard">
+                    <Dashboard />
                 </Route>
             </Switch>
         </Router>
