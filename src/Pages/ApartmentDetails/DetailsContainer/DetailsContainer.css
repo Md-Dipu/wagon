@@ -1,0 +1,8 @@
+.niche-details-title::before {
+    content: '';
+    display: inline-block;
+    border-bottom: 2px solid #df9321;
+    width: 70px;
+    margin-right: -71px;
+    margin-bottom: -0.5em;
+}
