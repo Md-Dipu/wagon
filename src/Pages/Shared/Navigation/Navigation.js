@@ -20,7 +20,7 @@ const Navigation = () => {
                     </Nav>
                     <div>
                         <Button as={NavLink} to="/login" variant="light" className="rounded-pill niche-nav-btn">Login</Button>{" "}
-                        <Button as={NavLink} to="/registion" variant="light" className="rounded-pill niche-nav-btn">Registion</Button>
+                        <Button as={NavLink} to="/register" variant="light" className="rounded-pill niche-nav-btn">Registion</Button>
                     </div>
                 </Navbar.Collapse>
             </Container>
