@@ -1,6 +1,6 @@
 import React from 'react';
 import initializeFirebase from '../Pages/Authentication/Firebase/firebase.init';
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // initialize firebase app
 initializeFirebase();
@@ -41,6 +41,15 @@ const useFirebase = () => {
             .catch(console.error);
     }
 
+    // login user
+    const logIn = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                // user log-in
+            })
+            .catch(console.error);
+    }
+
     // logout user
     const logOut = () => {
         signOut(auth)
@@ -50,7 +59,7 @@ const useFirebase = () => {
             .catch(console.error);
     }
 
-    return { user, register, logOut };
+    return { user, register, logIn, logOut };
 };
 
 export default useFirebase;
