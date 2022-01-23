@@ -1,0 +1,12 @@
+.niche-dashboard-side-nav-item {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+    border: 0;
+    color: white;
+    font-weight: 500;
+}
+
+.niche-dashboard-side-nav-item:hover {
+    color: #eeeeee;
+}
