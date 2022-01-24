@@ -8,6 +8,7 @@ initializeFirebase();
 
 const useFirebase = () => {
     const [user, setUser] = React.useState(null);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     // getting auth
     const auth = getAuth();
@@ -21,12 +22,14 @@ const useFirebase = () => {
             else {
                 setUser(null);
             }
+            setIsLoading(false);
         });
         return () => unsubscribe;
     }, [auth]);
 
     // register user
     const register = (newUser, history, to) => {
+        setIsLoading(true);
         const { name, email, password } = newUser;
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
@@ -45,7 +48,8 @@ const useFirebase = () => {
                 saveUser(newUserData);
                 redirect(history, to);
             })
-            .catch(console.error);
+            .catch(console.error)
+            .finally(() => setIsLoading(false));
     }
 
     // save user
@@ -64,24 +68,28 @@ const useFirebase = () => {
 
     // login user
     const logIn = (email, password, history, to) => {
+        setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 // user log-in
                 redirect(history, to);
             })
-            .catch(console.error);
+            .catch(console.error)
+            .finally(() => setIsLoading(false));
     }
 
     // logout user
     const logOut = () => {
+        setIsLoading(true);
         signOut(auth)
             .then(() => {
                 // user sign-out
             })
-            .catch(console.error);
+            .catch(console.error)
+            .finally(() => setIsLoading(false));
     }
 
-    return { user, register, logIn, logOut };
+    return { user, isLoading, register, logIn, logOut };
 };
 
 export default useFirebase;
