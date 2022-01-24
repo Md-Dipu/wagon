@@ -76,6 +76,19 @@ async function run() {
             res.json(result);
         });
 
+        // get orders
+        app.get('/orders', async (req, res) => {
+            const currentUserEmail = req.query.email;
+            let query = new Object();
+            if (currentUserEmail) {
+                query = { 'user.email': currentUserEmail };
+            }
+            const cursor = orderCollection.find(query);
+            const count = await cursor.count();
+            const result = await cursor.toArray();
+            res.send({ count, result });
+        });
+
         // post order
         app.post('/orders', async (req, res) => {
             const newOrder = req.body;
