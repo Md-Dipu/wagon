@@ -95,6 +95,14 @@ async function run() {
             const result = await orderCollection.insertOne(newOrder);
             res.json(result);
         });
+
+        // delete order
+        app.delete('/orders/:orderId', async (req, res) => {
+            const { orderId } = req.params;
+            const query = { _id: ObjectId(orderId) };
+            const result = await orderCollection.deleteOne(query);
+            res.send(result);
+        });
     }
     finally {
         // await client.close();
