@@ -2,12 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const RegisterForm = ({ register: registerUser }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const location = useLocation();
+    const history = useHistory();
 
     const handleOnSubmit = data => {
-        registerUser(data);
+        registerUser(data, history, location?.state?.from);
     }
 
     return (
@@ -44,7 +48,7 @@ const RegisterForm = ({ register: registerUser }) => {
                     {...register('password', { required: true, minLength: 6 })}
                 />
             </Form.Group>
-            <Button type="button" variant="link" as={Link} to="/login" className="mb-1 text-decoration-none">Already have an account?</Button><br />
+            <Button type="button" variant="link" as={Link} to={{ pathname: "/login", state: { from: location?.state?.from } }} className="mb-1 text-decoration-none">Already have an account?</Button><br />
             <Button type="submit">Register</Button>{" "}
             <Button type="button" variant="light" onClick={() => reset()}>Cancel</Button>
         </form>
