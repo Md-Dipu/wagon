@@ -17,6 +17,7 @@ async function run() {
         await client.connect();
         const database = client.db('niche_product_website');
         const apartmentCollection = database.collection('apartments');
+        const userCollection = database.collection('users');
 
         // get apartments
         app.get('/apartments', async (req, res) => {
