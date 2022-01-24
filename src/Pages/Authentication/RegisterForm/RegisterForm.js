@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
-const RegisterForm = () => {
+const RegisterForm = ({ register: registerUser }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleOnSubmit = data => {
-        console.log(data);
+        registerUser(data);
     }
 
     return (

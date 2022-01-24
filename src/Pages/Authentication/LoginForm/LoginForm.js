@@ -3,11 +3,12 @@ import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-const LoginForm = () => {
+const LoginForm = ({ logIn }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleOnSubmit = data => {
-        console.log(data);
+        const { email, password } = data;
+        logIn(email, password);
     }
 
     return (
