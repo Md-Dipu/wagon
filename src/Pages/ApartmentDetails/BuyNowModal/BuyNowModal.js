@@ -9,15 +9,24 @@ const BuyNowModal = (props) => {
 
     const { user } = useAuth();
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleAction = data => {
         const newOrder = {
             apartment,
+            user: { name: user.displayName, email: user.email },
             orderer: data,
             orderedDate: new Date().toLocaleDateString()
         };
-        console.log(newOrder);
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+        })
+            .then(() => reset())
+            .catch(console.error);
         onCloseModal();
     }
 
