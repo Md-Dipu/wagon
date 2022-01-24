@@ -8,6 +8,7 @@ initializeFirebase();
 
 const useFirebase = () => {
     const [user, setUser] = React.useState(null);
+    const [admin, setAdmin] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(true);
 
     // getting auth
@@ -26,6 +27,14 @@ const useFirebase = () => {
         });
         return () => unsubscribe;
     }, [auth]);
+
+    // observer admin state
+    React.useEffect(() => {
+        fetch(`http://localhost:5000/users/admin/verify?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+            .catch(console.error);
+    }, [user?.email])
 
     // register user
     const register = (newUser, history, to) => {
@@ -89,7 +98,7 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    return { user, isLoading, register, logIn, logOut };
+    return { user, admin, isLoading, register, logIn, logOut };
 };
 
 export default useFirebase;
