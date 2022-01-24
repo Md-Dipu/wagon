@@ -76,6 +76,35 @@ async function run() {
             res.json(result);
         });
 
+        // make user admin
+        app.put('/users/admin', verifyToken, async (req, res) => {
+            const user = req.body;
+            const requester = req.decodedUserEmail;
+            if (requester) {
+                const requesterAccount = await userCollection.findOne({ email: requester });
+                if (requesterAccount.role === 'admin') {
+                    const filter = { email: user.email };
+                    const updateDoc = { $set: { role: 'admin' } };
+                    const result = await userCollection.updateOne(filter, updateDoc);
+                    res.json(result);
+                }
+            }
+            else
+                res.status(403).json({ message: 'Backend: You don\'t have access to make admin.' });
+        });
+
+        // /users/admin/verify
+        app.get('/users/admin/verify', async (req, res) => {
+            const email = req.query.email;
+            const query = { email };
+            const user = await userCollection.findOne(query);
+            let isAdmin = false;
+            if (user?.role === 'admin') {
+                isAdmin = true;
+            }
+            res.json({ admin: isAdmin });
+        });
+
         // get orders
         app.get('/orders', async (req, res) => {
             const currentUserEmail = req.query.email;
