@@ -67,6 +67,13 @@ async function run() {
                 res.send(result);
             }
         });
+
+        // post user
+        app.post('/users', async (req, res) => {
+            const newUser = req.body;
+            const result = await userCollection.insertOne(newUser);
+            res.json(result);
+        });
     }
     finally {
         // await client.close();
