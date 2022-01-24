@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../../Hooks/useAuth';
 
 const BuyNowModal = (props) => {
     const { show, onCloseModal, apartment } = props;
     const { name } = apartment;
+
+    const { user } = useAuth();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -32,14 +35,14 @@ const BuyNowModal = (props) => {
                         type="text"
                         placeholder="Name"
                         className={`mb-3 ${errors.name && 'border-danger'}`}
-                        defaultValue={'Md. Dipu'}
+                        defaultValue={user.displayName}
                         {...register("name", { required: true })}
                     />
                     <Form.Control
                         type="email"
                         placeholder="Email"
                         className={`mb-3 ${errors.email && 'border-danger'}`}
-                        defaultValue={'dipu@def.com'}
+                        defaultValue={user.email}
                         {...register("email", { required: true })}
                     />
                     <Form.Control
