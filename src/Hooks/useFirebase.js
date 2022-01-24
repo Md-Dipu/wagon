@@ -1,6 +1,7 @@
 import React from 'react';
 import initializeFirebase from '../Pages/Authentication/Firebase/firebase.init';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import redirect from '../Utilities/redirect';
 
 // initialize firebase app
 initializeFirebase();
@@ -25,7 +26,7 @@ const useFirebase = () => {
     }, [auth]);
 
     // register user
-    const register = (newUser) => {
+    const register = (newUser, history, to) => {
         const { name, email, password } = newUser;
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
@@ -42,6 +43,7 @@ const useFirebase = () => {
                 const newUserData = { ...newUser };
                 delete newUserData.password;
                 saveUser(newUserData);
+                redirect(history, to);
             })
             .catch(console.error);
     }
@@ -61,10 +63,11 @@ const useFirebase = () => {
     }
 
     // login user
-    const logIn = (email, password) => {
+    const logIn = (email, password, history, to) => {
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 // user log-in
+                redirect(history, to);
             })
             .catch(console.error);
     }
