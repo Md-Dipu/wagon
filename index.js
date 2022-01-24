@@ -18,6 +18,7 @@ async function run() {
         const database = client.db('niche_product_website');
         const apartmentCollection = database.collection('apartments');
         const userCollection = database.collection('users');
+        const orderCollection = database.collection('orders');
 
         // get apartments
         app.get('/apartments', async (req, res) => {
@@ -72,6 +73,13 @@ async function run() {
         app.post('/users', async (req, res) => {
             const newUser = req.body;
             const result = await userCollection.insertOne(newUser);
+            res.json(result);
+        });
+
+        // post order
+        app.post('/orders', async (req, res) => {
+            const newOrder = req.body;
+            const result = await orderCollection.insertOne(newOrder);
             res.json(result);
         });
     }
