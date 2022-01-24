@@ -53,6 +53,20 @@ async function run() {
             const result = await apartmentCollection.deleteOne(query);
             res.send(result);
         });
+
+        // get users
+        app.get('/users', async (req, res) => {
+            const email = req.query.email;
+            if (email) {
+                const query = { email };
+                const result = await userCollection.findOne(query);
+                res.send(result);
+            } else {
+                const cursor = userCollection.findOne({});
+                const result = await cursor.toArray();
+                res.send(result);
+            }
+        });
     }
     finally {
         // await client.close();
