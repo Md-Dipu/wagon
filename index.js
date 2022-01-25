@@ -76,6 +76,15 @@ async function run() {
             res.json(result);
         });
 
+        // make user admin
+        app.put('/users/admin', async (req, res) => {
+            const user = req.body;
+            const filter = { email: user.email };
+            const updateDoc = { $set: { role: 'admin' } };
+            const result = await userCollection.updateOne(filter, updateDoc);
+            res.json(result);
+        });
+
         // /users/admin/verify
         app.get('/users/admin/verify', async (req, res) => {
             const email = req.query.email;
