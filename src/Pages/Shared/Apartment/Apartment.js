@@ -15,7 +15,7 @@ const Apartment = (props) => {
                 <span className="niche-divider opacity-50"></span>
                 <div className="d-flex justify-content-between mt-2">
                     <Card.Text as="p" className="h3">${price}</Card.Text>
-                    <Button as={Link} to={`/apartments/${_id}`} variant="warning" className="text-uppercase">buy</Button>
+                    <Button as={Link} to={`/apartments/${_id}`} variant="warning" className="text-uppercase">book now</Button>
                 </div>
             </Card.Body>
         </Card>
