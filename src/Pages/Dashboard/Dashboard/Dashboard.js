@@ -9,6 +9,7 @@ import TopNav from '../DashboardTopNav/DashboardTopNav';
 import MobileOffCanvas from '../DashboardMobileOffCanvas/DashBoardMobileOffCanvas';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Authentication/AdminRoute/AdminRoute';
+import AddApartment from '../AddApartment/AddApartment';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -43,6 +44,9 @@ const Dashboard = () => {
                             <Route exact path={path}>
                                 <Home />
                             </Route>
+                            <AdminRoute path={`${path}/add-a-apartment`}>
+                                <AddApartment />
+                            </AdminRoute>
                             <AdminRoute path={`${path}/make-admin`}>
                                 <MakeAdmin />
                             </AdminRoute>
