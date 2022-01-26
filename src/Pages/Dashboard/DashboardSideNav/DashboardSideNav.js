@@ -5,7 +5,7 @@ import './DashboardSideNav.css';
 import useAuth from '../../../Hooks/useAuth';
 
 const DashboardSideNav = ({ url, closeOffCanvas = () => { } }) => {
-    const { admin } = useAuth(); console.log(admin);
+    const { admin } = useAuth();
 
     return (
         <ListGroup>
