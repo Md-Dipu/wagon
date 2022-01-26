@@ -105,7 +105,7 @@ async function run() {
             res.json({ admin: isAdmin });
         });
 
-        // get orders
+        // get bookings
         app.get('/bookings', async (req, res) => {
             const currentUserEmail = req.query.email;
             let query = new Object();
@@ -118,14 +118,14 @@ async function run() {
             res.send({ count, result });
         });
 
-        // post order
+        // post bookings
         app.post('/bookings', async (req, res) => {
             const newOrder = req.body;
             const result = await bookingCollection.insertOne(newOrder);
             res.json(result);
         });
 
-        // delete order
+        // delete bookings
         app.delete('/bookings/:bookingId', async (req, res) => {
             const { bookingId } = req.params;
             const query = { _id: ObjectId(orderId) };
