@@ -48,7 +48,7 @@ const DetailsContainer = ({ apartment, showModal }) => {
                     <ul className="mb-3">
                         {more.map((item, _idx) => <li key={_idx} className="text-uppercase">{item}</li>)}
                     </ul>
-                    {/* buy now action field */}
+                    {/* Book now action field */}
                     <div className="border-top pt-3 d-flex justify-content-between align-items-center">
                         <div>
                             <small className="d-block text-secondary">{bestDeal ? 'Best Deal' : 'Starting at'}</small>
@@ -60,7 +60,7 @@ const DetailsContainer = ({ apartment, showModal }) => {
                                 className="rounded-pill text-uppercase"
                                 onClick={() => showModal(true)}
                             >
-                                Buy now
+                                Book now
                             </Button>
                         </div>
                     </div>

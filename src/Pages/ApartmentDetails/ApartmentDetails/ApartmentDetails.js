@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
-import BuyNowModal from '../BuyNowModal/BuyNowModal';
+import BookNowModal from '../BookNowModal/BookNowModal';
 import DetailsBanner from '../DetailsBanner/DetailsBanner';
 import DetailsContainer from '../DetailsContainer/DetailsContainer';
 import SpecialContact from '../SpecialContact/SpecialContact';
@@ -34,7 +34,7 @@ const ApartmentDetails = () => {
             />
             <SpecialContact />
             <Footer />
-            <BuyNowModal
+            <BookNowModal
                 show={showModal}
                 onCloseModal={() => setShowModal(false)}
                 apartment={{ _id: apartmentData._id, name: apartmentData.name, price: apartmentData.price }}

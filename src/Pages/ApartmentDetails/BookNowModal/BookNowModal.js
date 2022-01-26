@@ -3,7 +3,7 @@ import { Button, Container, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
 
-const BuyNowModal = (props) => {
+const BookNowModal = (props) => {
     const { show, onCloseModal, apartment } = props;
     const { name } = apartment;
 
@@ -12,18 +12,18 @@ const BuyNowModal = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleAction = data => {
-        const newOrder = {
+        const newBooking = {
             apartment,
             user: { name: user.displayName, email: user.email },
-            orderer: data,
-            orderedDate: new Date().toLocaleDateString()
+            buyer: data,
+            bookingDate: new Date().toLocaleDateString()
         };
-        fetch('http://localhost:5000/orders', {
+        fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newOrder)
+            body: JSON.stringify(newBooking)
         })
             .then(() => reset())
             .catch(console.error);
@@ -67,4 +67,4 @@ const BuyNowModal = (props) => {
     );
 };
 
-export default BuyNowModal;
+export default BookNowModal;
