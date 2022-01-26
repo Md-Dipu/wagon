@@ -18,7 +18,7 @@ async function run() {
         const database = client.db('niche_product_website');
         const apartmentCollection = database.collection('apartments');
         const userCollection = database.collection('users');
-        const orderCollection = database.collection('orders');
+        const bookingCollection = database.collection('bookings');
 
         // get apartments
         app.get('/apartments', async (req, res) => {
@@ -106,30 +106,30 @@ async function run() {
         });
 
         // get orders
-        app.get('/orders', async (req, res) => {
+        app.get('/bookings', async (req, res) => {
             const currentUserEmail = req.query.email;
             let query = new Object();
             if (currentUserEmail) {
                 query = { 'user.email': currentUserEmail };
             }
-            const cursor = orderCollection.find(query);
+            const cursor = bookingCollection.find(query);
             const count = await cursor.count();
             const result = await cursor.toArray();
             res.send({ count, result });
         });
 
         // post order
-        app.post('/orders', async (req, res) => {
+        app.post('/bookings', async (req, res) => {
             const newOrder = req.body;
-            const result = await orderCollection.insertOne(newOrder);
+            const result = await bookingCollection.insertOne(newOrder);
             res.json(result);
         });
 
         // delete order
-        app.delete('/orders/:orderId', async (req, res) => {
-            const { orderId } = req.params;
+        app.delete('/bookings/:bookingId', async (req, res) => {
+            const { bookingId } = req.params;
             const query = { _id: ObjectId(orderId) };
-            const result = await orderCollection.deleteOne(query);
+            const result = await bookingCollection.deleteOne(query);
             res.send(result);
         });
     }
