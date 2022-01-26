@@ -76,6 +76,14 @@ async function run() {
             res.json(result);
         });
 
+        // get admin
+        app.get('/users/admin', async (req, res) => {
+            const query = { role: 'admin' };
+            const cursor = userCollection.find(query);
+            const result = await cursor.toArray();
+            res.json(result);
+        });
+
         // make user admin
         app.put('/users/admin', async (req, res) => {
             const user = req.body;
