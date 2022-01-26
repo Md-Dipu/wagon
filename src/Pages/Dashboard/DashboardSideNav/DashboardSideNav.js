@@ -17,7 +17,7 @@ const DashboardSideNav = ({ url, closeOffCanvas = () => { } }) => {
             {/* admin only links */}
             {admin && <>
                 <ListGroup.Item as={Link} to={`${url}/manage-all-bookings`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">Manage All Booking</ListGroup.Item>
-                <ListGroup.Item as={Link} to={`${url}/add-a-apartment`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">Add A Apartment</ListGroup.Item>
+                <ListGroup.Item as={Link} to={`${url}/add-a-apartment`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">Add a Apartment</ListGroup.Item>
                 <ListGroup.Item as={Link} to={`${url}/manage-apartments`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">Manage Apartments</ListGroup.Item>
                 <ListGroup.Item as={Link} to={`${url}/make-admin`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">Make Admin</ListGroup.Item>
             </>}
