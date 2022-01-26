@@ -19,7 +19,7 @@ const AdminRoute = ({ children, ...rest }) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/login",
+                            pathname: "/dashboard",
                             state: { from: location }
                         }}
                     />
