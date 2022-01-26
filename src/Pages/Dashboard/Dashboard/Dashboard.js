@@ -10,6 +10,7 @@ import MobileOffCanvas from '../DashboardMobileOffCanvas/DashBoardMobileOffCanva
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Authentication/AdminRoute/AdminRoute';
 import AddApartment from '../AddApartment/AddApartment';
+import MyBookings from '../MyBookings/MyBookings';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -44,6 +45,9 @@ const Dashboard = () => {
                             <Route exact path={path}>
                                 <Home />
                             </Route>
+                            <AdminRoute path={`${path}/my-bookings`}>
+                                <MyBookings />
+                            </AdminRoute>
                             <AdminRoute path={`${path}/add-a-apartment`}>
                                 <AddApartment />
                             </AdminRoute>
