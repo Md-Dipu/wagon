@@ -3,8 +3,24 @@ import { Button, Col, Container, Image, Row, Table } from 'react-bootstrap';
 import './DetailsContainer.css';
 
 const DetailsContainer = ({ apartment, showModal }) => {
-    const { name, img, address, description = {}, more = [], price, templateImages = [], bestDeal } = apartment;
-    const { fullDescription, roomSize, roomNumber, roomFloor } = description;
+    const { name, img, address, description = {}, roomInfo = {}, more = [], price, templateImages = [], bestDeal } = apartment;
+    const { fullDescription } = description;
+    const { roomSize, roomNumber, roomFloor } = roomInfo;
+    const floorStr = floor => {
+        switch (floor) {
+            case 0:
+                return 'Not found';
+            case 1:
+                return `${floor}st Floor`;
+            case 2:
+                return `${floor}nd Floor`;
+            case 3:
+                return `${floor}rd Floor`;
+            default:
+                return `${floor}th Floor`;
+        }
+    }
+
 
     // display images
     const [displayImage, setDisplayImage] = React.useState(img);
@@ -30,20 +46,20 @@ const DetailsContainer = ({ apartment, showModal }) => {
                         <tbody>
                             <tr>
                                 <td>Size</td>
-                                <td className="text-end">{roomSize}</td>
+                                <td className="text-end">{roomSize} sq/ft</td>
                             </tr>
                             <tr>
                                 <td>Number</td>
-                                <td className="text-end">{roomNumber}</td>
+                                <td className="text-end">{roomNumber} Rooms</td>
                             </tr>
                             <tr>
                                 <td>Floor</td>
-                                <td className="text-end">{roomFloor}</td>
+                                <td className="text-end">{floorStr(+roomFloor)}</td>
                             </tr>
                         </tbody>
                     </Table>
                     <p className="h3 niche-details-title mb-3">Address</p>
-                    <p className="fs-5">{address}</p>
+                    <p className="fs-6">{address}</p>
                     <p className="h3 niche-details-title mb-3">More services</p>
                     <ul className="mb-3">
                         {more.map((item, _idx) => <li key={_idx} className="text-uppercase">{item}</li>)}
