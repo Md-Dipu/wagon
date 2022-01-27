@@ -11,7 +11,7 @@ const DashboardSideNav = ({ url, closeOffCanvas = () => { } }) => {
         <ListGroup>
             <ListGroup.Item as={Link} to={url} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">Dashboard</ListGroup.Item>
             <ListGroup.Item as={Link} to={`${url}/my-bookings`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">My Bookings</ListGroup.Item>
-            <ListGroup.Item as={Link} to={`${url}/my-reviews`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">My Reviews</ListGroup.Item>
+            <ListGroup.Item as={Link} to={`${url}/my-review`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">My Review</ListGroup.Item>
             <ListGroup.Item as={Link} to={`${url}/pay-now`} onClick={closeOffCanvas} className="niche-dashboard-side-nav-item">Pay Now</ListGroup.Item>
 
             {/* admin only links */}
