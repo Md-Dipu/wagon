@@ -45,9 +45,9 @@ const Dashboard = () => {
                             <Route exact path={path}>
                                 <Home />
                             </Route>
-                            <AdminRoute path={`${path}/my-bookings`}>
+                            <Route path={`${path}/my-bookings`}>
                                 <MyBookings />
-                            </AdminRoute>
+                            </Route>
                             <AdminRoute path={`${path}/add-a-apartment`}>
                                 <AddApartment />
                             </AdminRoute>
