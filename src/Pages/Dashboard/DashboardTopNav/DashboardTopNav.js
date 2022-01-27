@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import useWindowDimensions from '../../../Hooks/useWindowDimensions';
 import useAuth from '../../../Hooks/useAuth';
 
@@ -29,7 +31,7 @@ const DashboardTopNav = ({ showCanvas }) => {
                         onClick={logOut}
                         className="rounded-pill fw-bold px-3"
                     >
-                        Logout
+                        <FontAwesomeIcon icon={faSignOutAlt} /> Logout
                     </Nav.Link>
                 </Nav>
             </Container>
