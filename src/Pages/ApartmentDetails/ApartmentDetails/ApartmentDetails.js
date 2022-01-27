@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
+import Loading from '../../Shared/Loading/Loading';
 import Navigation from '../../Shared/Navigation/Navigation';
 import BookNowModal from '../BookNowModal/BookNowModal';
 import DetailsBanner from '../DetailsBanner/DetailsBanner';
@@ -10,6 +11,7 @@ import SpecialContact from '../SpecialContact/SpecialContact';
 const ApartmentDetails = () => {
     const [apartmentData, setApartmentData] = React.useState({});
     const [showModal, setShowModal] = React.useState(false);
+    const [pageLoading, setPageLoading] = React.useState(true);
 
     const { apartmentId } = useParams();
 
@@ -18,8 +20,13 @@ const ApartmentDetails = () => {
         fetch(`http://localhost:5000/apartments/${apartmentId}`)
             .then(res => res.json())
             .then(data => setApartmentData(data))
-            .catch(console.error);
+            .catch(console.error)
+            .finally(() => setPageLoading(false));
     }, [apartmentId]);
+
+    if (pageLoading) {
+        return (<Loading />);
+    }
 
     return (
         <>
