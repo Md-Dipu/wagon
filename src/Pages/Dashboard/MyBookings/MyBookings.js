@@ -39,6 +39,7 @@ const MyBookings = () => {
                         <th scope="col">Buyer Email</th>
                         <th scope="col">Buyer Phone</th>
                         <th scope="col">Booking Date</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -52,6 +53,7 @@ const MyBookings = () => {
                             <td>{booking.buyer.email}</td>
                             <td>{booking.buyer.phone}</td>
                             <td>{booking.bookingDate}</td>
+                            <td>{booking.status}</td>
                             <td>
                                 <Button
                                     variant="warning"
