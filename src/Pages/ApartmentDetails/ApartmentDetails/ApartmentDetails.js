@@ -6,6 +6,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 import BookNowModal from '../BookNowModal/BookNowModal';
 import DetailsBanner from '../DetailsBanner/DetailsBanner';
 import DetailsContainer from '../DetailsContainer/DetailsContainer';
+import RecentApartments from '../RecentApartments/RecentApartments';
 import SpecialContact from '../SpecialContact/SpecialContact';
 
 const ApartmentDetails = () => {
@@ -39,6 +40,7 @@ const ApartmentDetails = () => {
                 apartment={apartmentData}
                 showModal={setShowModal}
             />
+            <RecentApartments />
             <SpecialContact />
             <Footer />
             <BookNowModal
