@@ -19,9 +19,11 @@ const MyBookings = () => {
         fetch(`http://localhost:5000/bookings/${bookingId}`, {
             method: 'DELETE'
         })
-            .then(() => {
-                const restBooking = bookings.filter(booking => booking._id !== bookingId);
-                setBookings(restBooking);
+            .then(res => {
+                if (res.status === 200) {
+                    const restBooking = bookings.filter(booking => booking._id !== bookingId);
+                    setBookings(restBooking);
+                }
             })
             .catch(console.error);
     }

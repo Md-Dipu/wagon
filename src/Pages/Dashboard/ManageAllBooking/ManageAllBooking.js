@@ -47,10 +47,12 @@ const ManageAllBooking = () => {
                                             fetch(`http://localhost:5000/bookings/approved/${booking._id}`, {
                                                 method: 'PUT'
                                             })
-                                                .then(() => {
-                                                    const modifiedAllBooking = [...allBooking];
-                                                    modifiedAllBooking[index].status = 'Approved';
-                                                    setAllBooking(modifiedAllBooking);
+                                                .then(res => {
+                                                    if (res.status === 200) {
+                                                        const modifiedAllBooking = [...allBooking];
+                                                        modifiedAllBooking[index].status = 'Approved';
+                                                        setAllBooking(modifiedAllBooking);
+                                                    }
                                                 })
                                         }
                                     }}
@@ -68,9 +70,11 @@ const ManageAllBooking = () => {
                                             fetch(`http://localhost:5000/bookings/${booking._id}`, {
                                                 method: 'DELETE'
                                             })
-                                                .then(() => {
-                                                    const restBookings = allBooking.filter(x => x._id !== booking._id);
-                                                    setAllBooking(restBookings);
+                                                .then(res => {
+                                                    if (res.status === 200) {
+                                                        const restBookings = allBooking.filter(x => x._id !== booking._id);
+                                                        setAllBooking(restBookings);
+                                                    }
                                                 })
                                                 .catch(console.error);
                                         }

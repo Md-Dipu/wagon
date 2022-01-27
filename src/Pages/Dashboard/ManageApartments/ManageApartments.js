@@ -59,9 +59,11 @@ const ManageApartments = () => {
                                             fetch(`http://localhost:5000/apartments/${apartment._id}`, {
                                                 method: 'DELETE'
                                             })
-                                                .then(() => {
-                                                    const restApartments = allApartments.filter(x => x._id !== apartment._id);
-                                                    setAllApartments(restApartments);
+                                                .then(res => {
+                                                    if (res.status === 200) {
+                                                        const restApartments = allApartments.filter(x => x._id !== apartment._id);
+                                                        setAllApartments(restApartments);
+                                                    }
                                                 })
                                                 .catch(console.error);
                                         }

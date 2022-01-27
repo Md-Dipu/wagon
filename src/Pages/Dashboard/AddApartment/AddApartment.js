@@ -29,7 +29,11 @@ const AddApartment = () => {
             },
             body: JSON.stringify(newApartment)
         })
-            .then(() => reset())
+            .then(res => {
+                if (res.status === 200) {
+                    reset();
+                }
+            })
             .catch(console.error);
     }
 
