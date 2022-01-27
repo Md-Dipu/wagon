@@ -55,7 +55,7 @@ const Apartments = () => {
         <>
             <Navigation />
             <Banner
-                title="Find you Dream Apartment"
+                title="Find your Dream Apartment"
                 text="Take a apartmant at best price."
             />
             <ApartmentsContainer
