@@ -22,11 +22,12 @@ async function run() {
 
         // get apartments
         app.get('/apartments', async (req, res) => {
-            const { page = 1, limit = 0 } = req.query;
+            const page = Number(req.query.page) || 1;
+            const limit = Number(req.query.limit) || 0;
             let cursor = apartmentCollection.find({});
             const count = await cursor.count();
             if (limit) {
-                cursor = cursor.skip(+limit * (+page - 1)).limit(+limit);
+                cursor = cursor.skip(limit * (page - 1)).limit(limit);
             }
             const results = await cursor.toArray();
             res.send({ count, results });
