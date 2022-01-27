@@ -16,7 +16,7 @@ const ApartmentsContainer = (props) => {
             </Row>
 
             {/* pagination: button holder */}
-            <div className="text-center my-3">
+            {Math.ceil(count / limit) > 1 && <div className="text-center my-3">
                 <ButtonGroup className="text-center">
                     <Button
                         variant="outline-primary"
@@ -55,7 +55,7 @@ const ApartmentsContainer = (props) => {
                         N
                     </Button>
                 </ButtonGroup>
-            </div>
+            </div>}
         </Container>
     );
 };
