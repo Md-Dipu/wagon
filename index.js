@@ -33,6 +33,14 @@ async function run() {
             res.send({ count, results });
         });
 
+        // get recent apartments
+        app.get('/apartments/recent', async (req, res) => {
+            const limit = Number(req.query.limit) || 3;
+            const cursor = apartmentCollection.find({}).sort({ $natural: -1 }).limit(limit);
+            const result = await cursor.toArray();
+            res.send(result);
+        });
+
         // get single apartment
         app.get('/apartments/:apartmentId', async (req, res) => {
             const { apartmentId } = req.params;
