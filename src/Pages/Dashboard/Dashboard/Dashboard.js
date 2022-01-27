@@ -13,6 +13,7 @@ import AddApartment from '../AddApartment/AddApartment';
 import MyBookings from '../MyBookings/MyBookings';
 import PayNow from '../PayNow/PayNow';
 import ManageApartments from '../ManageApartments/ManageApartments';
+import ManageAllBooking from '../ManageAllBooking/ManageAllBooking';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -53,6 +54,9 @@ const Dashboard = () => {
                             <Route path={`${path}/pay-now`}>
                                 <PayNow />
                             </Route>
+                            <AdminRoute path={`${path}/manage-all-booking`}>
+                                <ManageAllBooking />
+                            </AdminRoute>
                             <AdminRoute path={`${path}/add-a-apartment`}>
                                 <AddApartment />
                             </AdminRoute>
