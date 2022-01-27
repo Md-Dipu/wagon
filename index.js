@@ -135,6 +135,17 @@ async function run() {
             res.json(result);
         });
 
+        // approved booking
+        app.put('/bookings/approved/:bookingId', async (req, res) => {
+            const { bookingId } = req.params;
+            const filter = { _id: ObjectId(bookingId) };
+            const update = {
+                $set: { status: 'Approved' }
+            };
+            const result = await bookingCollection.updateOne(filter, update);
+            res.json(result);
+        });
+
         // delete bookings
         app.delete('/bookings/:bookingId', async (req, res) => {
             const { bookingId } = req.params;
