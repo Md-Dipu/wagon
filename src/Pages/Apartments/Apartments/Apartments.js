@@ -2,6 +2,7 @@ import React from 'react';
 import useWindowDimensions from '../../../Hooks/useWindowDimensions';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
+import Banner from '../ApartmentsBanner/ApartmentsBanner';
 import ApartmentsContainer from '../ApartmentsContainer/ApartmentsContainer';
 
 const Apartments = () => {
@@ -31,7 +32,10 @@ const Apartments = () => {
     return (
         <>
             <Navigation />
-            <div className="bg-dark d-lg-block d-none" style={{ height: 56, marginBottom: 50 }}></div>
+            <Banner
+                title="Find you Dream Apartment"
+                text="Take a apartmant at best price."
+            />
             <ApartmentsContainer apartments={apartments} />
             <Footer />
         </>
