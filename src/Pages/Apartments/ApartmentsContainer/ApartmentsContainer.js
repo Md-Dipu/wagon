@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import Apartment from '../../Shared/Apartment/Apartment';
 
 const ApartmentsContainer = (props) => {
@@ -28,7 +30,7 @@ const ApartmentsContainer = (props) => {
                             }
                         }}
                     >
-                        P
+                        <FontAwesomeIcon icon={faArrowLeft} />
                     </Button>
                     {[...Array(Math.ceil(count / limit)).keys()]
                         .map(page => (
@@ -52,7 +54,7 @@ const ApartmentsContainer = (props) => {
                             }
                         }}
                     >
-                        N
+                        <FontAwesomeIcon icon={faArrowRight} />
                     </Button>
                 </ButtonGroup>
             </div>}
