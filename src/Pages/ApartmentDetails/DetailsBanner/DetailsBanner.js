@@ -2,8 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import './DetailsBanner.css';
 
-const DetailsBanner = props => {
-    const { title, text } = props;
+const DetailsBanner = ({ title, text }) => {
     return (
         <div className="niche-details-banner d-flex justify-content-center align-items-center">
             <Container className="text-center text-light">
