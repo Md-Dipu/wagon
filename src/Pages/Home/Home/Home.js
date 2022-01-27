@@ -5,6 +5,7 @@ import About from '../AboutSummary/AboutSummary';
 import Apartments from '../HomeApartments/HomeApartments';
 import Banner from '../HomeBanner/HomeBanner';
 import Reviews from '../HomeReviews/HomeReviews';
+import Contact from '../HomeContact/HomeContact';
 
 const Home = () => {
     document.title = "Wagon - Buy your Dream Apartment";
@@ -16,6 +17,7 @@ const Home = () => {
             <About />
             <Apartments />
             <Reviews />
+            <Contact />
             <Footer />
         </>
     );
