@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import useWindowDimensions from '../../../Hooks/useWindowDimensions';
 import useAuth from '../../../Hooks/useAuth';
 
@@ -22,7 +22,9 @@ const DashboardTopNav = ({ showCanvas }) => {
     return (
         <Navbar variant="light" bg="secondary">
             <Container fluid>
-                {displayMobileMenu && <Button variant="outline-light me-2" onClick={showCanvas}>Menu</Button>}
+                {displayMobileMenu && <Button variant="outline-light me-3" onClick={showCanvas}>
+                    <FontAwesomeIcon icon={faBars} />
+                </Button>}
                 <Navbar.Brand as={NavLink} to="/" className="fw-bold">Wagon</Navbar.Brand>
                 <Nav className="ms-auto">
                     <Nav.Link
