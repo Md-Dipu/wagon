@@ -39,7 +39,7 @@ const HomeContact = () => {
                             to="/apartments"
                             className="rounded-pill"
                         >
-                            Buy One Now
+                            Book One Now
                         </Button>
                     </Col>
                 </Row>

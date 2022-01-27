@@ -12,7 +12,7 @@ const HomeBanner = () => {
                     Awesome Apartments <br />
                     are waiting for you.
                 </h1>
-                <Button as={Link} to="/apartments" variant="primary" className="rounded-pill niche-home-banner-btn">Buy One</Button>{" "}
+                <Button as={Link} to="/apartments" variant="primary" className="rounded-pill niche-home-banner-btn">Book One Now</Button>{" "}
                 <Button as={HashLink} to="/#contact-us" variant="outline-light" className="rounded-pill niche-home-banner-btn">Contact Us</Button>
             </div>
         </div>
