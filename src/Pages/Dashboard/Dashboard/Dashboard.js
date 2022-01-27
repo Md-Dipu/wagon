@@ -11,6 +11,7 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Authentication/AdminRoute/AdminRoute';
 import AddApartment from '../AddApartment/AddApartment';
 import MyBookings from '../MyBookings/MyBookings';
+import PayNow from '../PayNow/PayNow';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -47,6 +48,9 @@ const Dashboard = () => {
                             </Route>
                             <Route path={`${path}/my-bookings`}>
                                 <MyBookings />
+                            </Route>
+                            <Route path={`${path}/pay-now`}>
+                                <PayNow />
                             </Route>
                             <AdminRoute path={`${path}/add-a-apartment`}>
                                 <AddApartment />
