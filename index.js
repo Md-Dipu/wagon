@@ -130,6 +130,7 @@ async function run() {
         // post bookings
         app.post('/bookings', async (req, res) => {
             const newOrder = req.body;
+            newOrder.status = 'Pending';
             const result = await bookingCollection.insertOne(newOrder);
             res.json(result);
         });
