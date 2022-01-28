@@ -18,7 +18,7 @@ const ApartmentDetails = () => {
 
     // getting apartment data from server
     React.useEffect(() => {
-        fetch(`http://localhost:5000/apartments/${apartmentId}`)
+        fetch(`https://niche-product-website.herokuapp.com/apartments/${apartmentId}`)
             .then(res => res.json())
             .then(data => setApartmentData(data))
             .catch(console.error)

@@ -22,7 +22,7 @@ const AddApartment = () => {
             templateImages: [image0, image1, image2],
             more: more.split(',').map(item => item.trim())
         };
-        fetch('http://localhost:5000/apartments', {
+        fetch('https://niche-product-website.herokuapp.com/apartments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

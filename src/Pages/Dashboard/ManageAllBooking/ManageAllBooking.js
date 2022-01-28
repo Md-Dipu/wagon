@@ -5,7 +5,7 @@ const ManageAllBooking = () => {
     const [allBooking, setAllBooking] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/bookings')
+        fetch('https://niche-product-website.herokuapp.com/bookings')
             .then(res => res.json())
             .then(data => setAllBooking(data.result))
             .catch(console.error);
@@ -44,7 +44,7 @@ const ManageAllBooking = () => {
                                     onClick={() => {
                                         const confirmation = window.confirm('Are you sure to Approve?');
                                         if (confirmation) {
-                                            fetch(`http://localhost:5000/bookings/approved/${booking._id}`, {
+                                            fetch(`https://niche-product-website.herokuapp.com/bookings/approved/${booking._id}`, {
                                                 method: 'PUT'
                                             })
                                                 .then(res => {
@@ -67,7 +67,7 @@ const ManageAllBooking = () => {
                                     onClick={() => {
                                         const confirmation = window.confirm('Are you sure to Delete?');
                                         if (confirmation) {
-                                            fetch(`http://localhost:5000/bookings/${booking._id}`, {
+                                            fetch(`https://niche-product-website.herokuapp.com/bookings/${booking._id}`, {
                                                 method: 'DELETE'
                                             })
                                                 .then(res => {

@@ -19,7 +19,7 @@ const RecentApartments = () => {
     }, [deviceWidth]);
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/apartments/recent?limit=${limit}`)
+        fetch(`https://niche-product-website.herokuapp.com/apartments/recent?limit=${limit}`)
             .then(res => res.json())
             .then(setRecentApartments)
             .catch(console.error);

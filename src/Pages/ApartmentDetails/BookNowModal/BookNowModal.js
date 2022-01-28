@@ -18,7 +18,7 @@ const BookNowModal = (props) => {
             buyer: data,
             bookingDate: new Date().toLocaleDateString()
         };
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://niche-product-website.herokuapp.com/bookings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

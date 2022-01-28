@@ -14,7 +14,7 @@ const MyReview = () => {
 
     const onSubmit = data => {
         const newReview = { ...data, rating, user: { name: user.displayName, email: user.email } };
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://niche-product-website.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

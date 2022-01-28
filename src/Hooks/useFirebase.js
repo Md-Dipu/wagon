@@ -31,7 +31,7 @@ const useFirebase = () => {
 
     // observer admin state
     React.useEffect(() => {
-        fetch(`http://localhost:5000/users/admin/verify?email=${user?.email}`)
+        fetch(`https://niche-product-website.herokuapp.com/users/admin/verify?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
             .catch(console.error);
@@ -72,7 +72,7 @@ const useFirebase = () => {
 
     // save user
     const saveUser = (newUser) => {
-        fetch('http://localhost:5000/users', {
+        fetch('https://niche-product-website.herokuapp.com/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

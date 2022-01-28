@@ -8,7 +8,7 @@ const HomeReviews = () => {
     const [reviews, setReviews] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://niche-product-website.herokuapp.com/reviews')
             .then(res => res.json())
             .then(setReviews)
             .catch(console.error);

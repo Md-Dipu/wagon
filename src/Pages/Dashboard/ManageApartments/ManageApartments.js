@@ -20,7 +20,7 @@ const ManageApartments = () => {
     }
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/apartments')
+        fetch('https://niche-product-website.herokuapp.com/apartments')
             .then(res => res.json())
             .then(data => setAllApartments(data.results))
             .catch(console.error);
@@ -56,7 +56,7 @@ const ManageApartments = () => {
                                     onClick={() => {
                                         const confirmation = window.confirm('Are you sure to Delete?');
                                         if (confirmation) {
-                                            fetch(`http://localhost:5000/apartments/${apartment._id}`, {
+                                            fetch(`https://niche-product-website.herokuapp.com/apartments/${apartment._id}`, {
                                                 method: 'DELETE'
                                             })
                                                 .then(res => {

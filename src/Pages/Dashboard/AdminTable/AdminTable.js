@@ -5,7 +5,7 @@ const AdminTable = ({ observer }) => {
     const [adminUsers, setAdminUsers] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/users/admin')
+        fetch('https://niche-product-website.herokuapp.com/users/admin')
             .then(res => res.json())
             .then(data => setAdminUsers(data))
             .catch(console.error);

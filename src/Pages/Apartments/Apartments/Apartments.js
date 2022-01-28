@@ -39,7 +39,7 @@ const Apartments = () => {
 
     React.useEffect(() => {
         if (limit) {
-            fetch(`http://localhost:5000/apartments?limit=${limit}&page=${currentPage}`)
+            fetch(`https://niche-product-website.herokuapp.com/apartments?limit=${limit}&page=${currentPage}`)
                 .then(res => res.json())
                 .then(data => setApartments(data))
                 .catch(console.error)

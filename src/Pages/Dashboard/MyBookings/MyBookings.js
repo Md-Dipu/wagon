@@ -8,7 +8,7 @@ const MyBookings = () => {
     const { user } = useAuth();
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+        fetch(`https://niche-product-website.herokuapp.com/bookings?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setBookings(data.result));
     }, [user?.email]);
@@ -16,7 +16,7 @@ const MyBookings = () => {
     const cancelBooking = (bookingId) => {
         const confirmation = window.confirm('Are you sure to Cancel?');
         if (!confirmation) return;
-        fetch(`http://localhost:5000/bookings/${bookingId}`, {
+        fetch(`https://niche-product-website.herokuapp.com/bookings/${bookingId}`, {
             method: 'DELETE'
         })
             .then(res => {

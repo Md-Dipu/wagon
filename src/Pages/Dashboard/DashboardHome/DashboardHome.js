@@ -12,7 +12,7 @@ const DashboardHome = () => {
     const { user } = useAuth();
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+        fetch(`https://niche-product-website.herokuapp.com/bookings?email=${user?.email}`)
             .then(res => res.json())
             .then(setMyBookings)
             .catch(console.error);

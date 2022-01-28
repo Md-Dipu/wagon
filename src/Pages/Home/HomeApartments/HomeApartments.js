@@ -8,7 +8,7 @@ const HomeApartments = () => {
     const [apartments, setApartments] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/apartments?limit=5')
+        fetch('https://niche-product-website.herokuapp.com/apartments?limit=5')
             .then(res => res.json())
             .then(data => setApartments(data.results))
             .catch(console.error);
