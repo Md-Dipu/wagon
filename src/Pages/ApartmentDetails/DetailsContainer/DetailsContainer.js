@@ -9,7 +9,7 @@ const DetailsContainer = ({ apartment, showModal }) => {
     const floorStr = floor => {
         switch (floor) {
             case 0:
-                return 'Not found';
+                return 'Ground Floor';
             case 1:
                 return `${floor}st Floor`;
             case 2:
