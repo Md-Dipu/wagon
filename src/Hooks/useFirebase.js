@@ -9,6 +9,7 @@ initializeFirebase();
 const useFirebase = () => {
     const [user, setUser] = React.useState(null);
     const [admin, setAdmin] = React.useState(false);
+    const [authError, setAuthError] = React.useState('');
     const [isLoading, setIsLoading] = React.useState(true);
 
     // getting auth
@@ -34,7 +35,15 @@ const useFirebase = () => {
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
             .catch(console.error);
-    }, [user?.email])
+    }, [user?.email]);
+
+    // auth error observer
+    React.useEffect(() => {
+        if (authError) {
+            window.alert(authError);
+            setAuthError('');
+        }
+    }, [authError]);
 
     // register user
     const register = (newUser, history, to) => {
@@ -57,7 +66,7 @@ const useFirebase = () => {
                 saveUser(newUserData);
                 redirect(history, to);
             })
-            .catch(console.error)
+            .catch(error => setAuthError(error.message))
             .finally(() => setIsLoading(false));
     }
 
@@ -83,7 +92,7 @@ const useFirebase = () => {
                 // user log-in
                 redirect(history, to);
             })
-            .catch(console.error)
+            .catch(error => setAuthError(error.message))
             .finally(() => setIsLoading(false));
     }
 
@@ -94,7 +103,7 @@ const useFirebase = () => {
             .then(() => {
                 // user sign-out
             })
-            .catch(console.error)
+            .catch(error => setAuthError(error.message))
             .finally(() => setIsLoading(false));
     }
 
