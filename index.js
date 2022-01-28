@@ -19,6 +19,7 @@ async function run() {
         const apartmentCollection = database.collection('apartments');
         const userCollection = database.collection('users');
         const bookingCollection = database.collection('bookings');
+        const reviewCollection = database.collection('reviews');
 
         // get apartments
         app.get('/apartments', async (req, res) => {
@@ -152,6 +153,30 @@ async function run() {
             const query = { _id: ObjectId(bookingId) };
             const result = await bookingCollection.deleteOne(query);
             res.send(result);
+        });
+
+        // post review
+        app.post('/reviews', async (req, res) => {
+            const newReview = req.body;
+            const addRatingCodeWord = rating => {
+                switch (rating) {
+                    case 1:
+                        return 'Very Sad';
+                    case 2:
+                        return 'Sad';
+                    case 3:
+                        return 'Good';
+                    case 4:
+                        return 'Happy';
+                    case 5:
+                        return 'Very Happy';
+                    default:
+                        return 'No Star';
+                }
+            }
+            newReview.ratingCodeWord = addRatingCodeWord(newReview.rating);
+            const result = await reviewCollection.insertOne(newReview);
+            res.json(result);
         });
     }
     finally {
