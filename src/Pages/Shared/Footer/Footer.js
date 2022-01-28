@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import './Footer.css';
 
@@ -17,10 +17,11 @@ const Footer = () => {
                     <Col xs={12} md={3}>
                         <h5 className="niche-footer-title">Quick Links</h5>
                         <ul className="mt-4 niche-footer-quick-links">
-                            <li><Link to="/" className="text-light">Home</Link></li>
-                            <li><Link to="/about-us" className="text-light">About Us</Link></li>
-                            <li><Link to="/apartments" className="text-light">Apartments</Link></li>
-                            <li><Link to="/reviews" className="text-light">Reviews</Link></li>
+                            <li><HashLink to="/#" className="text-light">Home</HashLink></li>
+                            <li><HashLink to="/#about-us" className="text-light">About Us</HashLink></li>
+                            <li><HashLink to="/apartments" className="text-light">Apartments</HashLink></li>
+                            <li><HashLink to="/#reviews" className="text-light">Reviews</HashLink></li>
+                            <li><HashLink to="/#contact-us" className="text-light">Contact Us</HashLink></li>
                         </ul>
                     </Col>
                     <Col xs={12} md={3}>
