@@ -2,11 +2,13 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import useAuth from '../../../Hooks/useAuth';
 import './Navigation.css';
 
 const Navigation = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
 
     const location = useLocation();
     const passRedirectLocation = () => {
@@ -24,8 +26,9 @@ const Navigation = () => {
                 <Navbar.Collapse id="niche-navbar-nav">
                     <Nav className="mx-auto">
                         <Nav.Link as={NavLink} exact to="/" className="fw-bold">Home</Nav.Link>
-                        <Nav.Link as={HashLink} to="/#about-us" className="fw-bold">About Us</Nav.Link>
+                        {user && <Nav.Link as={NavLink} exact to="/dashboard" className="fw-bold">Dashboard</Nav.Link>}
                         <Nav.Link as={NavLink} exact to="/apartments" className="fw-bold">Apartments</Nav.Link>
+                        <Nav.Link as={HashLink} to="/#about-us" className="fw-bold">About Us</Nav.Link>
                         <Nav.Link as={HashLink} to="/#reviews" className="fw-bold">Reviews</Nav.Link>
                         <Nav.Link as={HashLink} to="/#contact-us" className="fw-bold">Contact Us</Nav.Link>
                     </Nav>
@@ -39,7 +42,7 @@ const Navigation = () => {
                             variant="light"
                             className="rounded-pill niche-nav-btn"
                         >
-                            Login
+                            <FontAwesomeIcon icon={faSignInAlt} /> Login
                         </Button>{" "}
                         <Button
                             as={NavLink}
@@ -53,7 +56,7 @@ const Navigation = () => {
                             Registion
                         </Button>
                     </div>}
-                    {user && <Button as={NavLink} to="/dashboard" variant="light" className="rounded-pill niche-nav-btn">Dashboard</Button>}
+                    {user && <Button variant="success" onClick={logOut} className="rounded-pill"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</Button>}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
