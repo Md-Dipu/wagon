@@ -1,0 +1,10 @@
+.niche-not-found-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://i.ibb.co/m0bkvG4/home-banner-2.jpg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
