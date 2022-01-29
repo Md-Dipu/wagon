@@ -6,6 +6,7 @@ import Login from "./Pages/Authentication/Login/Login";
 import PrivateRoute from "./Pages/Authentication/PrivateRoute/PrivateRoute";
 import Register from "./Pages/Authentication/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+import NotFound from "./Pages/NotFound/NotFound";
 import Home from "./Pages/Home/Home/Home";
 
 const App = () => {
@@ -30,6 +31,9 @@ const App = () => {
                     </Route>
                     <Route path="/register">
                         <Register />
+                    </Route>
+                    <Route path="*">
+                        <NotFound />
                     </Route>
                 </Switch>
             </Router>
