@@ -15,6 +15,7 @@ import PayNow from '../PayNow/PayNow';
 import ManageApartments from '../ManageApartments/ManageApartments';
 import ManageAllBooking from '../ManageAllBooking/ManageAllBooking';
 import MyReview from '../MyReview/MyReview';
+import NotFound from '../DashboardNotFound/DashboardNotFound';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -70,6 +71,12 @@ const Dashboard = () => {
                             <AdminRoute path={`${path}/make-admin`}>
                                 <MakeAdmin />
                             </AdminRoute>
+                            <Route path={`${path}/*`}>
+                                <NotFound
+                                    url={url}
+                                    linkText="Back to Dashboard"
+                                />
+                            </Route>
                         </Switch>
                     </Col>
                 </Row>
