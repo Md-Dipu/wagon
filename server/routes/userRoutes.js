@@ -12,6 +12,7 @@ router.route("/id/:id")
     .get(userControllers.getUserById);
 
 router.route("/email/:email")
-    .get(userControllers.getUserByEmail);
+    .get(userControllers.getUserByEmail)
+    .patch(userControllers.updateUserByEmail);
 
 module.exports = router;
