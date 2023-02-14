@@ -30,3 +30,11 @@ exports.findUserByEmail = async (email) => {
 
     return user;
 };
+
+exports.updateUser = async (query, data) => {
+    const result = await User.updateOne(query, data, {
+        runValidators: true
+    });
+
+    return result;
+};
