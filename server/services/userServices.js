@@ -17,3 +17,8 @@ exports.findUsers = async (filters, queries) => {
         count
     };
 };
+
+exports.findUserById = async (id) => {
+    const user = await User.findById(id);
+    return user;
+};
