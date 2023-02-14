@@ -17,3 +17,10 @@ exports.findBookings = async (filters, queries) => {
         count
     };
 };
+
+exports.updateBookingById = async (id, data) => {
+    const result = await Booking.updateOne({ _id: id }, data, {
+        runValidators: true
+    });
+    return result;
+};
