@@ -1,4 +1,9 @@
-const { insertUser, findUsers, findUserById } = require("../services/userServices");
+const {
+    insertUser,
+    findUsers,
+    findUserById,
+    findUserByEmail
+} = require("../services/userServices");
 const parseQuery = require("../utils/parseQuery");
 
 exports.postUser = async (req, res) => {
@@ -47,6 +52,25 @@ exports.getUsers = async (req, res) => {
 exports.getUserById = async (req, res) => {
     try {
         const user = await findUserById(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            message: "User data found successfully",
+            data: user
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Couldn't able to find user data",
+            error: error.message
+        });
+    }
+};
+
+exports.getUserByEmail = async (req, res) => {
+    try {
+        const user = await findUserByEmail(req.params.email);
 
         res.status(200).json({
             success: true,

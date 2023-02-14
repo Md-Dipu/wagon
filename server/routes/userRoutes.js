@@ -11,4 +11,7 @@ router.route("/")
 router.route("/id/:id")
     .get(userControllers.getUserById);
 
+router.route("/email/:email")
+    .get(userControllers.getUserByEmail);
+
 module.exports = router;
