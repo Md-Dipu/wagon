@@ -3,7 +3,8 @@ const {
     findUsers,
     findUserById,
     findUserByEmail,
-    updateUser
+    updateUser,
+    deleteUser
 } = require("../services/userServices");
 const parseQuery = require("../utils/parseQuery");
 
@@ -104,6 +105,27 @@ exports.updateUserByEmail = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Couldn't able to update user data",
+            error: error.message
+        });
+    }
+};
+
+exports.deleteUserByEmail = async (req, res) => {
+    try {
+        const result = await deleteUser({
+            email: req.params.email
+        });
+
+        res.status(200).json({
+            success: true,
+            message: "User data deleted successfully",
+            data: result
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Couldn't able to delete user data",
             error: error.message
         });
     }
