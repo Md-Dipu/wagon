@@ -20,6 +20,10 @@ exports.findUsers = async (filters, queries) => {
 
 exports.findUserById = async (id) => {
     const user = await User.findById(id);
+    if (!user) {
+        throw new Error("Document now found");
+    }
+
     return user;
 };
 
@@ -27,6 +31,10 @@ exports.findUserByEmail = async (email) => {
     const user = await User.findOne({
         email
     });
+
+    if (!user) {
+        throw new Error("Document now found");
+    }
 
     return user;
 };
