@@ -24,3 +24,8 @@ exports.updateBookingById = async (id, data) => {
     });
     return result;
 };
+
+exports.deleteBookingById = async (id) => {
+    const result = await Booking.deleteOne({ _id: id });
+    return result;
+};
