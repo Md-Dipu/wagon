@@ -1,6 +1,7 @@
 const {
     insertApartment,
-    findApartments
+    findApartments,
+    findApartmentById
 } = require("../services/apartmentServices");
 const parseQuery = require("../utils/parseQuery");
 
@@ -42,6 +43,25 @@ exports.getApartments = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Couldn't able to find apartments data",
+            error: error.message
+        });
+    }
+};
+
+exports.getApartmentById = async (req, res) => {
+    try {
+        const apartment = await findApartmentById(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            message: "Apartment data found successfully",
+            data: apartment
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Couldn't able to find apartment data",
             error: error.message
         });
     }

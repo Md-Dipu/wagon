@@ -17,3 +17,8 @@ exports.findApartments = async (filters, queries) => {
         count
     };
 };
+
+exports.findApartmentById = async (id) => {
+    const apartment = await Apartment.findById(id);
+    return apartment;
+};
