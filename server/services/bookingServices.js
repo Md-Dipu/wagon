@@ -18,6 +18,15 @@ exports.findBookings = async (filters, queries) => {
     };
 };
 
+exports.findBookingById = async (id) => {
+    const booking = await Booking.findById(id);
+    if (!booking) {
+        throw new Error("Document not found");
+    }
+
+    return booking;
+};
+
 exports.updateBookingById = async (id, data) => {
     const result = await Booking.updateOne({ _id: id }, data, {
         runValidators: true
