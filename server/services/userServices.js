@@ -22,3 +22,11 @@ exports.findUserById = async (id) => {
     const user = await User.findById(id);
     return user;
 };
+
+exports.findUserByEmail = async (email) => {
+    const user = await User.findOne({
+        email
+    });
+
+    return user;
+};
