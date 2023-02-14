@@ -20,6 +20,10 @@ exports.findApartments = async (filters, queries) => {
 
 exports.findApartmentById = async (id) => {
     const apartment = await Apartment.findById(id);
+    if (!apartment) {
+        throw new Error("Document not found");
+    }
+
     return apartment;
 };
 
