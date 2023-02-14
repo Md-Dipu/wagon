@@ -1,7 +1,8 @@
 const {
     insertApartment,
     findApartments,
-    findApartmentById
+    findApartmentById,
+    deleteApartmentById: deleteApartmentDataById
 } = require("../services/apartmentServices");
 const parseQuery = require("../utils/parseQuery");
 
@@ -62,6 +63,25 @@ exports.getApartmentById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Couldn't able to find apartment data",
+            error: error.message
+        });
+    }
+};
+
+exports.deleteApartmentById = async (req, res) => {
+    try {
+        const result = await deleteApartmentDataById(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            message: "Apartment data deleted successfully",
+            data: result
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Couldn't able to delete apartment data",
             error: error.message
         });
     }

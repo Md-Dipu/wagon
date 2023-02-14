@@ -22,3 +22,15 @@ exports.findApartmentById = async (id) => {
     const apartment = await Apartment.findById(id);
     return apartment;
 };
+
+exports.deleteApartmentById = async (id) => {
+    const result = await Apartment.deleteOne({
+        _id: id
+    });
+
+    if (!result.deletedCount) {
+        throw new Error("Document not found");
+    }
+
+    return result;
+};
