@@ -31,10 +31,18 @@ exports.findUserByEmail = async (email) => {
     return user;
 };
 
-exports.updateUser = async (query, data) => {
-    const result = await User.updateOne(query, data, {
+exports.updateUser = async (filter, data) => {
+    const result = await User.updateOne(filter, data, {
         runValidators: true
     });
 
+    return result;
+};
+
+exports.deleteUser = async (filter) => {
+    const result = await User.deleteOne(filter);
+    if (!result.deletedCount) {
+        throw new Error("Document not found");
+    }
     return result;
 };
