@@ -1,7 +1,8 @@
 const {
     insertBooking,
     findBookings,
-    findBookingById
+    findBookingById,
+    updateBookingById
 } = require("../services/bookingServices");
 const parseQuery = require("../utils/parseQuery");
 
@@ -62,6 +63,25 @@ exports.getBookingById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Couldn't able to find booking data",
+            error: error.message
+        });
+    }
+};
+
+exports.updateBookingById = async (req, res) => {
+    try {
+        const result = await updateBookingById(req.params.id, req.body);
+
+        res.status(200).json({
+            success: true,
+            message: "Booking data updated successfully",
+            data: result
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Couldn't able to update booking data",
             error: error.message
         });
     }
