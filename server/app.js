@@ -3,6 +3,7 @@ const express = require("express");
 
 const apartmentRoutes = require("./routes/apartmentRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use("/apartments", apartmentRoutes);
 app.use("/bookings", bookingRoutes);
+app.use("/reviews", reviewRoutes);
 app.use("/users", userRoutes);
 
 app.get("/", (req, res) => {
