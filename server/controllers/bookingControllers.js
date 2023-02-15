@@ -2,7 +2,8 @@ const {
     insertBooking,
     findBookings,
     findBookingById,
-    updateBookingById
+    updateBookingById,
+    deleteBookingById
 } = require("../services/bookingServices");
 const parseQuery = require("../utils/parseQuery");
 
@@ -82,6 +83,25 @@ exports.updateBookingById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Couldn't able to update booking data",
+            error: error.message
+        });
+    }
+};
+
+exports.deleteBookingById = async (req, res) => {
+    try {
+        const result = await deleteBookingById(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            message: "Booking data deleted successfully",
+            data: result
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Couldn't able to delete booking data",
             error: error.message
         });
     }
