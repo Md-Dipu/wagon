@@ -13,7 +13,7 @@ exports.findBookings = async (filters, queries) => {
         .sort(queries.sortby);
     const count = await Booking.countDocuments(filters);
     return {
-        users: bookings,
+        bookings,
         count
     };
 };

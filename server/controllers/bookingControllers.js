@@ -37,7 +37,7 @@ exports.getBookings = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Bookings data found successfully",
-            data: result.users,
+            data: result.bookings,
             count: result.count
         });
 
