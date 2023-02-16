@@ -2,15 +2,15 @@ import React from 'react';
 import { Carousel, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { reviewAPI } from '../../../Utilities/API';
 import './HomeReviews.css';
 
 const HomeReviews = () => {
     const [reviews, setReviews] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('https://niche-product-website.herokuapp.com/reviews')
-            .then(res => res.json())
-            .then(setReviews)
+        reviewAPI.get('?limit=5&fields=name,rating,message,ratingCodeWord')
+            .then(res => setReviews(res.data.data))
             .catch(console.error);
     }, []);
 
@@ -23,7 +23,7 @@ const HomeReviews = () => {
                             <div>
                                 <FontAwesomeIcon icon={faStar} color="#ffd700" /> {review.rating}
                             </div>
-                            <p className="fw-bold text-secondary">{review.ratingCodeWord}</p>
+                            <p className="fw-bold text-secondary text-capitalize">{review.ratingCodeWord}</p>
                         </div>
                         <p className="fs-6 fst-italic">"{review.message}"</p>
                         <p className="h6 text-end">-{review.name}</p>
