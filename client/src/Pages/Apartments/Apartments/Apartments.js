@@ -6,9 +6,11 @@ import Loading from '../../Shared/Loading/Loading';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../ApartmentsBanner/ApartmentsBanner';
 import ApartmentsContainer from '../ApartmentsContainer/ApartmentsContainer';
+import { apartmentAPI } from '../../../Utilities/API';
 
 const Apartments = () => {
-    const [apartments, setApartments] = React.useState({ count: 0, results: [] });
+    const [apartments, setApartments] = React.useState([]);
+    const [count, setCount] = React.useState([]);
     const [limit, setLimit] = React.useState(0);
     const [pageLoading, setPageLoading] = React.useState(true);
     const [clickObserver, setClickObserver] = React.useState(0);
@@ -29,19 +31,22 @@ const Apartments = () => {
     // pagination
     const history = useHistory();
     const location = useLocation();
-    const searchQueary = new URLSearchParams(location.search);
-    const currentPage = parseInt(searchQueary.get('page')) || 1;
+    const searchQuery = new URLSearchParams(location.search);
+    const currentPage = parseInt(searchQuery.get('page')) || 1;
     const setCurrentPage = pageNumber => {
-        searchQueary.set('page', String(pageNumber));
-        location.search = searchQueary.toString();
+        searchQuery.set('page', String(pageNumber));
+        location.search = searchQuery.toString();
         history.push(location);
     };
 
     React.useEffect(() => {
         if (limit) {
-            fetch(`https://niche-product-website.herokuapp.com/apartments?limit=${limit}&page=${currentPage}`)
-                .then(res => res.json())
-                .then(data => setApartments(data))
+            apartmentAPI.get(`?limit=${limit}&page=${currentPage}&fields=name,img,description.shortDescription,price`)
+                .then(res => res.data)
+                .then(({ data, count }) => {
+                    setApartments(data);
+                    setCount(count)
+                })
                 .catch(console.error)
                 .finally(() => setPageLoading(false));
         }
@@ -56,10 +61,11 @@ const Apartments = () => {
             <Navigation />
             <Banner
                 title="Find your Dream Apartment"
-                text="Take a apartmant at best price."
+                text="Take a apartment at best price."
             />
             <ApartmentsContainer
                 apartments={apartments}
+                count={count}
                 setCurrentPage={setCurrentPage}
                 setPageLoading={setPageLoading}
                 limit={limit}
