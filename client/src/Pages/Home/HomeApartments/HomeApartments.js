@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Apartment from '../../Shared/Apartment/Apartment';
+import { apartmentAPI } from '../../../Utilities/API';
 import './HomeApartments.css';
 
 const HomeApartments = () => {
     const [apartments, setApartments] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('https://niche-product-website.herokuapp.com/apartments?limit=5')
-            .then(res => res.json())
-            .then(data => setApartments(data.results))
+        apartmentAPI.get('?limit=5&sortby=-price&fields=name,img,description.shortDescription,price')
+            .then(res => setApartments(res.data.data))
             .catch(console.error);
     }, []);
 
