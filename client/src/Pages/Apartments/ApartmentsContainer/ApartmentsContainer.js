@@ -1,16 +1,16 @@
 import React from 'react';
-import { Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import Apartment from '../../Shared/Apartment/Apartment';
 
 const ApartmentsContainer = (props) => {
-    const { apartments: { count, results }, setCurrentPage, setPageLoading, limit, currentPage, observer } = props;
+    const { apartments, count, setCurrentPage, setPageLoading, limit, currentPage, observer } = props;
 
     return (
         <Container className="my-4">
             <Row className="g-4">
-                {results.map(apartment =>
+                {apartments.map(apartment =>
                     <Col xs={12} md={6} lg={4} key={apartment._id}>
                         <Apartment apartment={apartment} />
                     </Col>
