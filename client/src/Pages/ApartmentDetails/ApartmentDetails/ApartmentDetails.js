@@ -8,6 +8,7 @@ import DetailsBanner from '../DetailsBanner/DetailsBanner';
 import DetailsContainer from '../DetailsContainer/DetailsContainer';
 import RecentApartments from '../RecentApartments/RecentApartments';
 import SpecialContact from '../SpecialContact/SpecialContact';
+import { apartmentAPI } from '../../../Utilities/API';
 
 const ApartmentDetails = () => {
     const [apartmentData, setApartmentData] = React.useState({});
@@ -18,9 +19,8 @@ const ApartmentDetails = () => {
 
     // getting apartment data from server
     React.useEffect(() => {
-        fetch(`https://niche-product-website.herokuapp.com/apartments/${apartmentId}`)
-            .then(res => res.json())
-            .then(data => setApartmentData(data))
+        apartmentAPI.get(`/${apartmentId}`)
+            .then(res => setApartmentData(res.data.data))
             .catch(console.error)
             .finally(() => setPageLoading(false));
     }, [apartmentId]);
