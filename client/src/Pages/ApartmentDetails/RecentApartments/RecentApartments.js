@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import useWindowDimensions from '../../../Hooks/useWindowDimensions';
 import Apartment from '../../Shared/Apartment/Apartment';
+import { apartmentAPI } from '../../../Utilities/API';
 
 const RecentApartments = () => {
     const [recentApartments, setRecentApartments] = React.useState([]);
@@ -19,9 +20,8 @@ const RecentApartments = () => {
     }, [deviceWidth]);
 
     React.useEffect(() => {
-        fetch(`https://niche-product-website.herokuapp.com/apartments/recent?limit=${limit}`)
-            .then(res => res.json())
-            .then(setRecentApartments)
+        apartmentAPI.get(`?limit=${limit}&sortby=-createdAt&fields=name,img,description.shortDescription,price`)
+            .then(res => setRecentApartments(res.data.data))
             .catch(console.error);
     }, [limit]);
 
