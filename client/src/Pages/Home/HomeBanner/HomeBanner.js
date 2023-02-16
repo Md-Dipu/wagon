@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import './HomeBanner.css';
 import { HashLink } from 'react-router-hash-link';
+import './HomeBanner.css';
 
 const HomeBanner = () => {
     return (
