@@ -1,13 +1,29 @@
 import React from 'react';
 import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { apartmentAPI } from '../../../Utilities/API';
 
 const AddApartment = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = data => {
-        const { price, shortDescription, fullDescription, roomSize, roomNumber, roomFloor, image0, image1, image2, more, ...rest } = data;
-        const newApartment = {
+    const history = useHistory();
+
+    const onSubmit = (data) => {
+        const {
+            price,
+            shortDescription,
+            fullDescription,
+            roomSize,
+            roomNumber,
+            roomFloor,
+            image0,
+            image1,
+            image2,
+            more,
+            ...rest
+        } = data;
+        apartmentAPI.post({
             ...rest,
             price: +price,
             description: {
@@ -21,20 +37,12 @@ const AddApartment = () => {
             },
             templateImages: [image0, image1, image2],
             more: more.split(',').map(item => item.trim())
-        };
-        fetch('https://niche-product-website.herokuapp.com/apartments', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newApartment)
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    reset();
-                }
-            })
-            .catch(console.error);
+        }).then(({ data }) => {
+            if (data.success) {
+                reset();
+                history.push('/dashboard/manage-apartments');
+            }
+        });
     }
 
     return (
@@ -104,7 +112,7 @@ const AddApartment = () => {
                             {...register('fullDescription', { required: true })}
                             multiple
                         />
-                        {/* room informations */}
+                        {/* room information */}
                         <Row xs={1} sm={2} className="gy-0 gx-3 my-0">
                             <Col>
                                 <InputGroup className="mb-3">
