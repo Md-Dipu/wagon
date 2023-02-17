@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
+import { bookingAPI } from '../../../Utilities/API';
 
 const ManageAllBooking = () => {
     const [allBooking, setAllBooking] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('https://niche-product-website.herokuapp.com/bookings')
-            .then(res => res.json())
-            .then(data => setAllBooking(data.result))
+        bookingAPI.get('?limit=0')
+            .then(res => setAllBooking(res.data.data))
             .catch(console.error);
     }, []);
 
@@ -36,27 +36,26 @@ const ManageAllBooking = () => {
                             <td>$ {booking.apartment.price}</td>
                             <td>{booking.user.name}</td>
                             <td>{booking.user.email}</td>
-                            <td>{booking.bookingDate}</td>
-                            <td>{booking.status}</td>
+                            <td>{new Date(booking.createdAt).toLocaleDateString()}</td>
+                            <td className="text-capitalize">{booking.status}</td>
                             <td>
                                 <Button
                                     variant="warning"
                                     onClick={() => {
                                         const confirmation = window.confirm('Are you sure to Approve?');
                                         if (confirmation) {
-                                            fetch(`https://niche-product-website.herokuapp.com/bookings/approved/${booking._id}`, {
-                                                method: 'PUT'
+                                            bookingAPI.patch(`/${booking._id}`, {
+                                                status: 'approved'
+                                            }).then(({ data }) => {
+                                                if (data.success) {
+                                                    const modifiedAllBooking = [...allBooking];
+                                                    modifiedAllBooking[index].status = 'approved';
+                                                    setAllBooking(modifiedAllBooking);
+                                                }
                                             })
-                                                .then(res => {
-                                                    if (res.status === 200) {
-                                                        const modifiedAllBooking = [...allBooking];
-                                                        modifiedAllBooking[index].status = 'Approved';
-                                                        setAllBooking(modifiedAllBooking);
-                                                    }
-                                                })
                                         }
                                     }}
-                                    disabled={(booking.status !== 'Pending')}
+                                    disabled={(booking.status !== 'pending')}
                                 >
                                     Approved
                                 </Button>
@@ -67,16 +66,13 @@ const ManageAllBooking = () => {
                                     onClick={() => {
                                         const confirmation = window.confirm('Are you sure to Delete?');
                                         if (confirmation) {
-                                            fetch(`https://niche-product-website.herokuapp.com/bookings/${booking._id}`, {
-                                                method: 'DELETE'
+                                            bookingAPI.delete(`/${booking._id}`).then(({ data }) => {
+                                                if (data.success) {
+                                                    const restBookings = allBooking.filter(x => x._id !== booking._id);
+                                                    console.log(restBookings);
+                                                    setAllBooking(restBookings);
+                                                }
                                             })
-                                                .then(res => {
-                                                    if (res.status === 200) {
-                                                        const restBookings = allBooking.filter(x => x._id !== booking._id);
-                                                        setAllBooking(restBookings);
-                                                    }
-                                                })
-                                                .catch(console.error);
                                         }
                                     }}
                                 >
