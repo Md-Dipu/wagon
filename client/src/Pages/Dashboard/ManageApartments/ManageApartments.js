@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
+import { apartmentAPI } from '../../../Utilities/API';
 
 const ManageApartments = () => {
     const [allApartments, setAllApartments] = React.useState([]);
@@ -20,9 +21,11 @@ const ManageApartments = () => {
     }
 
     React.useEffect(() => {
-        fetch('https://niche-product-website.herokuapp.com/apartments')
-            .then(res => res.json())
-            .then(data => setAllApartments(data.results))
+        apartmentAPI.get()
+            .then(({ data }) => {
+                console.log(data);
+                setAllApartments(data.data);
+            })
             .catch(console.error);
     }, []);
 
@@ -56,16 +59,12 @@ const ManageApartments = () => {
                                     onClick={() => {
                                         const confirmation = window.confirm('Are you sure to Delete?');
                                         if (confirmation) {
-                                            fetch(`https://niche-product-website.herokuapp.com/apartments/${apartment._id}`, {
-                                                method: 'DELETE'
-                                            })
-                                                .then(res => {
-                                                    if (res.status === 200) {
-                                                        const restApartments = allApartments.filter(x => x._id !== apartment._id);
-                                                        setAllApartments(restApartments);
-                                                    }
-                                                })
-                                                .catch(console.error);
+                                            apartmentAPI.delete(`/${apartment._id}`).then(({ data }) => {
+                                                if (data.success) {
+                                                    const restApartments = allApartments.filter(x => x._id !== apartment._id);
+                                                    setAllApartments(restApartments);
+                                                }
+                                            });
                                         }
                                     }}
                                 >
