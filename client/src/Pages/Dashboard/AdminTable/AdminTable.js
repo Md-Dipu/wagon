@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container, Table } from 'react-bootstrap';
+import { userAPI } from '../../../Utilities/API';
 
 const AdminTable = ({ observer }) => {
     const [adminUsers, setAdminUsers] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('https://niche-product-website.herokuapp.com/users/admin')
-            .then(res => res.json())
-            .then(data => setAdminUsers(data))
+        userAPI.get('?role=admin')
+            .then(res => setAdminUsers(res.data.data))
             .catch(console.error);
     }, [observer]);
 

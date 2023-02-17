@@ -2,28 +2,23 @@ import React from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import AdminTable from '../AdminTable/AdminTable';
+import { userAPI } from '../../../Utilities/API';
 
 const MakeAdmin = () => {
-    const [stateObsever, setStateObserver] = React.useState(0); // number: observeing change every time
+    const [stateObserver, setStateObserver] = React.useState(0); // number: observing change every time
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = data => {
-        fetch('https://niche-product-website.herokuapp.com/users/admin', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
+    const onSubmit = (data) => {
+        userAPI.patch(`/email/${data.email}`, {
+            role: 'admin'
+        }).then(({ data }) => {
+            if (data.success) {
+                setStateObserver(stateObserver + 1);
                 reset();
-                if (data.modifiedCount > 0)
-                    setStateObserver(stateObsever + 1);
-            })
-            .catch(console.error);
-    }
+            }
+        });
+    };
 
     return (
         <>
@@ -47,7 +42,7 @@ const MakeAdmin = () => {
                 </form>
             </Container>
             <AdminTable
-                observer={stateObsever}
+                observer={stateObserver}
             />
         </>
     );
