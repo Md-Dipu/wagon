@@ -23,7 +23,6 @@ const ManageApartments = () => {
     React.useEffect(() => {
         apartmentAPI.get()
             .then(({ data }) => {
-                console.log(data);
                 setAllApartments(data.data);
             })
             .catch(console.error);
