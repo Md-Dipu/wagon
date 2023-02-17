@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
+import { bookingAPI } from '../../../Utilities/API';
 
 const BookNowModal = (props) => {
     const { show, onCloseModal, apartment } = props;
@@ -12,22 +13,19 @@ const BookNowModal = (props) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleAction = data => {
+        delete Object.assign(apartment, { id: apartment._id })._id;
         const newBooking = {
             apartment,
             user: { name: user.displayName, email: user.email },
             buyer: data,
             bookingDate: new Date().toLocaleDateString()
         };
-        fetch('https://niche-product-website.herokuapp.com/bookings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newBooking)
-        })
-            .then(() => reset())
-            .catch(console.error);
-        onCloseModal();
+        bookingAPI.post(newBooking).then(({ data }) => {
+            if (data.success) {
+                reset();
+                onCloseModal();
+            }
+        }).catch(console.error);
     }
 
     return (
@@ -60,7 +58,8 @@ const BookNowModal = (props) => {
                         className={`mb-3 ${errors.phone && 'border-danger'}`}
                         {...register("phone", { required: true })}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button variant="primary" type="submit">Submit</Button>{" "}
+                    <Button variant="outline-secondary" onClick={onCloseModal}>Cancel</Button>
                 </form>
             </Container>
         </Modal>
