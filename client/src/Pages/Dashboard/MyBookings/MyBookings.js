@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import useAuth from '../../../Hooks/useAuth';
+import { bookingAPI } from '../../../Utilities/API';
 
 const MyBookings = () => {
     const [bookings, setBookings] = React.useState([]);
@@ -8,20 +9,22 @@ const MyBookings = () => {
     const { user } = useAuth();
 
     React.useEffect(() => {
-        fetch(`https://niche-product-website.herokuapp.com/bookings?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setBookings(data.result));
+        if (user?.email) {
+            bookingAPI.get(`?user.email=${user.email}&limit=0`)
+                .then(res => setBookings(res.data.data))
+                .catch(console.error);
+        }
     }, [user?.email]);
 
     const cancelBooking = (bookingId) => {
         const confirmation = window.confirm('Are you sure to Cancel?');
         if (!confirmation) return;
-        fetch(`https://niche-product-website.herokuapp.com/bookings/${bookingId}`, {
-            method: 'DELETE'
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    const restBooking = bookings.filter(booking => booking._id !== bookingId);
+        bookingAPI.delete(`/${bookingId}`)
+            .then(({ data }) => {
+                if (data.success) {
+                    const restBooking = bookings
+                        .filter(booking =>
+                            booking._id !== bookingId);
                     setBookings(restBooking);
                 }
             })
@@ -54,8 +57,8 @@ const MyBookings = () => {
                             <td>{booking.buyer.name}</td>
                             <td>{booking.buyer.email}</td>
                             <td>{booking.buyer.phone}</td>
-                            <td>{booking.bookingDate}</td>
-                            <td>{booking.status}</td>
+                            <td>{new Date(booking.createdAt).toLocaleDateString()}</td>
+                            <td className="text-capitalize">{booking.status}</td>
                             <td>
                                 <Button
                                     variant="warning"
