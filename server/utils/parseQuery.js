@@ -27,8 +27,10 @@ module.exports = (query) => {
         queries.fields = fields.split(",").join(" ");
     }
 
-    queries.limit = parseInt(limit) || 10;
-    queries.skip = queries.limit * ((parseInt(page) || 1) - 1);
+    if (queries.limit) {
+        queries.limit = parseInt(limit);
+        queries.skip = queries.limit * ((parseInt(page) || 1) - 1);
+    }
 
     if (sortby) {
         queries.sortby = sortby.split(",").join(" ");
