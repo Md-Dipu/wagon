@@ -1,6 +1,14 @@
 import React from 'react';
+import {
+    getAuth,
+    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    signInWithEmailAndPassword,
+    signOut
+} from "firebase/auth";
 import initializeFirebase from '../Pages/Authentication/Firebase/firebase.init';
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { userAPI } from '../Utilities/API';
 import redirect from '../Utilities/redirect';
 
 // initialize firebase app
@@ -31,10 +39,14 @@ const useFirebase = () => {
 
     // observer admin state
     React.useEffect(() => {
-        fetch(`https://niche-product-website.herokuapp.com/users/admin/verify?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setAdmin(data.admin))
-            .catch(console.error);
+        if (user?.email) {
+            userAPI.get(`/email/${user.email}`)
+                .then(res => {
+                    const role = res.data.data.role;
+                    setAdmin(role === 'admin');
+                })
+                .catch(console.error);
+        }
     }, [user?.email]);
 
     // auth error observer
@@ -50,38 +62,22 @@ const useFirebase = () => {
         setIsLoading(true);
         const { name, email, password } = newUser;
         createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                // update user information to firebase
-                updateProfile(auth.currentUser, { displayName: name })
-                    .then(() => {
-                        // data updated
-                    })
-                    .catch(error => {
-                        throw new Error(error)
-                    });
+            .then(async () => {
+                try {
+                    // update user information to firebase
+                    await updateProfile(auth.currentUser, { displayName: name });
 
-                // update user information to website database
-                const newUserData = { ...newUser };
-                delete newUserData.password;
-                saveUser(newUserData);
-                redirect(history, to);
+                    // update user information to website database
+                    const newUserData = { ...newUser };
+                    delete newUserData.password;
+                    await userAPI.post(newUserData);
+                    redirect(history, to);
+                } catch (error) {
+                    setAuthError(error.message);
+                }
             })
             .catch(error => setAuthError(error.message))
             .finally(() => setIsLoading(false));
-    }
-
-    // save user
-    const saveUser = (newUser) => {
-        fetch('https://niche-product-website.herokuapp.com/users', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newUser)
-        })
-            .catch(error => {
-                throw new Error(error);
-            });
     }
 
     // login user
