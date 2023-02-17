@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import ReactStars from "react-rating-stars-component";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import useAuth from '../../../Hooks/useAuth';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import ReactStars from 'react-rating-stars-component';
+import useAuth from '../../../Hooks/useAuth';
+import { reviewAPI } from '../../../Utilities/API';
 
 const MyReview = () => {
     const [rating, setRating] = React.useState(0);
@@ -12,21 +13,19 @@ const MyReview = () => {
     const { user } = useAuth();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = data => {
-        const newReview = { ...data, rating, user: { name: user.displayName, email: user.email } };
-        fetch('https://niche-product-website.herokuapp.com/reviews', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newReview)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged)
-                    reset();
-            })
-            .catch(console.error);
+    const onSubmit = (data) => {
+        reviewAPI.post({
+            ...data,
+            rating,
+            user: {
+                name: user.displayName,
+                email: user.email
+            }
+        }).then(({ data }) => {
+            if (data.success) {
+                reset();
+            }
+        }).catch(console.error);
     }
 
     return (
