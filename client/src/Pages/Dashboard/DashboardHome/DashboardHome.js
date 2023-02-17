@@ -1,28 +1,37 @@
 import React from 'react';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import useAuth from '../../../Hooks/useAuth';
+import { bookingAPI } from '../../../Utilities/API'
 
 const DashboardHome = () => {
-    const [myBookings, setMyBookings] = React.useState({ count: 0, result: [] });
+    const [bookings, setBookings] = React.useState([]);
+    const [count, setCount] = React.useState(0);
     const [approvedBooking, setApprovedBooking] = React.useState([]);
     const [pendingBooking, setPendingBooking] = React.useState([]);
     const [cost, setCost] = React.useState(0);
-    const { count, result: booking } = myBookings;
 
     const { user } = useAuth();
 
     React.useEffect(() => {
-        fetch(`https://niche-product-website.herokuapp.com/bookings?email=${user?.email}`)
-            .then(res => res.json())
-            .then(setMyBookings)
-            .catch(console.error);
+        if (user?.email) {
+            bookingAPI.get(`?user.email=${user.email}&limit=0&fields=apartment.name,apartment.price,buyer.name,status,createdAt`)
+                .then(res => res.data)
+                .then(({ data, count }) => {
+                    setBookings(data);
+                    setCount(count);
+                })
+                .catch(console.error);
+        }
     }, [user?.email]);
 
     React.useEffect(() => {
-        setApprovedBooking(booking.filter(x => x.status === 'Approved'));
-        setPendingBooking(booking.filter(x => x.status === 'Pending'));
-        setCost(booking.reduce((previous, current) => previous + current.apartment.price, 0));
-    }, [booking]);
+        setApprovedBooking(bookings.filter(x => x.status === 'approved'));
+        setPendingBooking(bookings.filter(x => x.status === 'pending'));
+        setCost(bookings.reduce(
+            (previous, current) => previous + current.apartment.price,
+            0
+        ));
+    }, [bookings]);
 
     return (
         <Container fluid className="my-3">
@@ -53,13 +62,16 @@ const DashboardHome = () => {
                         {pendingBooking.length === 0 && <p className="text-center fs-5">No item found!</p>}
                         <Table responsive hover className="text-center">
                             <tbody>
-                                {pendingBooking?.map((book, index) =>
-                                    <tr key={book._id}>
+                                {pendingBooking?.map((booking, index) =>
+                                    <tr key={booking._id}>
                                         <td>{index + 1}</td>
-                                        <td>{book.apartment.name}</td>
-                                        <td>{book.buyer.name}</td>
-                                        <td>$ {book.apartment.price}</td>
-                                        <td>{book.bookingDate}</td>
+                                        <td>{booking.apartment.name}</td>
+                                        <td>{booking.buyer.name}</td>
+                                        <td>$ {booking.apartment.price}</td>
+                                        <td>{new Date(booking.createdAt)
+                                            .toDateString()
+                                            .replace(' ', ', ')}
+                                        </td>
                                     </tr>
                                 )}
                             </tbody>
