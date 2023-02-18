@@ -7,8 +7,7 @@ const ManageAllBooking = () => {
 
     React.useEffect(() => {
         bookingAPI.get('?limit=0')
-            .then(res => setAllBooking(res.data.data))
-            .catch(console.error);
+            .then(res => setAllBooking(res.data.data));
     }, []);
 
     return (

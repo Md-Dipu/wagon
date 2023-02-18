@@ -21,8 +21,7 @@ const RecentApartments = () => {
 
     React.useEffect(() => {
         apartmentAPI.get(`?limit=${limit}&sortby=-createdAt&fields=name,img,description.shortDescription,price`)
-            .then(res => setRecentApartments(res.data.data))
-            .catch(console.error);
+            .then(res => setRecentApartments(res.data.data));
     }, [limit]);
 
     return (

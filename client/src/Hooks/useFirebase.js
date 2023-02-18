@@ -40,12 +40,10 @@ const useFirebase = () => {
     // observer admin state
     React.useEffect(() => {
         if (user?.email) {
-            userAPI.get(`/email/${user.email}`)
-                .then(res => {
-                    const role = res.data.data.role;
-                    setAdmin(role === 'admin');
-                })
-                .catch(console.error);
+            userAPI.get(`/email/${user.email}`).then(res => {
+                const role = res.data.data.role;
+                setAdmin(role === 'admin');
+            });
         }
     }, [user?.email]);
 

@@ -25,7 +25,7 @@ const MyReview = () => {
             if (data.success) {
                 reset();
             }
-        }).catch(console.error);
+        });
     }
 
     return (

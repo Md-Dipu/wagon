@@ -19,8 +19,7 @@ const DashboardHome = () => {
                 .then(({ data, count }) => {
                     setBookings(data);
                     setCount(count);
-                })
-                .catch(console.error);
+                });
         }
     }, [user?.email]);
 

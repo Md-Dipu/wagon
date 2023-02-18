@@ -6,9 +6,9 @@ const AdminTable = ({ observer }) => {
     const [adminUsers, setAdminUsers] = React.useState([]);
 
     React.useEffect(() => {
-        userAPI.get('?role=admin')
-            .then(res => setAdminUsers(res.data.data))
-            .catch(console.error);
+        userAPI.get('?role=admin').then(({ data }) => {
+            setAdminUsers(data.data);
+        });
     }, [observer]);
 
     return (

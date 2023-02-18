@@ -10,8 +10,7 @@ const HomeReviews = () => {
 
     React.useEffect(() => {
         reviewAPI.get('?limit=5&fields=name,rating,message,ratingCodeWord')
-            .then(res => setReviews(res.data.data))
-            .catch(console.error);
+            .then(res => setReviews(res.data.data));
     }, []);
 
     return (

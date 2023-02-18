@@ -47,7 +47,6 @@ const Apartments = () => {
                     setApartments(data);
                     setCount(count)
                 })
-                .catch(console.error)
                 .finally(() => setPageLoading(false));
         }
     }, [limit, currentPage, clickObserver]);

@@ -25,7 +25,7 @@ const BookNowModal = (props) => {
                 reset();
                 onCloseModal();
             }
-        }).catch(console.error);
+        });
     }
 
     return (

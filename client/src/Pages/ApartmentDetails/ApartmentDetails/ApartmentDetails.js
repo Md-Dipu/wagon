@@ -21,7 +21,6 @@ const ApartmentDetails = () => {
     React.useEffect(() => {
         apartmentAPI.get(`/${apartmentId}`)
             .then(res => setApartmentData(res.data.data))
-            .catch(console.error)
             .finally(() => setPageLoading(false));
     }, [apartmentId]);
 

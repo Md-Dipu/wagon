@@ -10,8 +10,7 @@ const HomeApartments = () => {
 
     React.useEffect(() => {
         apartmentAPI.get('?limit=5&sortby=-price&fields=name,img,description.shortDescription,price')
-            .then(res => setApartments(res.data.data))
-            .catch(console.error);
+            .then(res => setApartments(res.data.data));
     }, []);
 
     return (

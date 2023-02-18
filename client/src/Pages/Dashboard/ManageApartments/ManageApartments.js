@@ -21,11 +21,9 @@ const ManageApartments = () => {
     }
 
     React.useEffect(() => {
-        apartmentAPI.get()
-            .then(({ data }) => {
-                setAllApartments(data.data);
-            })
-            .catch(console.error);
+        apartmentAPI.get().then(({ data }) => {
+            setAllApartments(data.data);
+        });
     }, []);
 
     return (

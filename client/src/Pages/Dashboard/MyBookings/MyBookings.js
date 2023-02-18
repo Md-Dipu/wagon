@@ -10,9 +10,8 @@ const MyBookings = () => {
 
     React.useEffect(() => {
         if (user?.email) {
-            bookingAPI.get(`?user.email=${user.email}&limit=0`)
-                .then(res => setBookings(res.data.data))
-                .catch(console.error);
+            bookingAPI.get(`?user.email=${user.email}`)
+                .then(res => setBookings(res.data.data));
         }
     }, [user?.email]);
 
@@ -27,8 +26,7 @@ const MyBookings = () => {
                             booking._id !== bookingId);
                     setBookings(restBooking);
                 }
-            })
-            .catch(console.error);
+            });
     }
 
     return (
