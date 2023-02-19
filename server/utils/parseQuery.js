@@ -27,7 +27,7 @@ module.exports = (query) => {
         queries.fields = fields.split(",").join(" ");
     }
 
-    if (queries.limit) {
+    if (limit) {
         queries.limit = parseInt(limit);
         queries.skip = queries.limit * ((parseInt(page) || 1) - 1);
     }
