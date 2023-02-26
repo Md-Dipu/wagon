@@ -1,19 +1,20 @@
 const express = require("express");
 
 const userControllers = require("../controllers/userControllers");
+const verifyToken = require("../middleware/verifyToken");
 
 const router = express.Router();
 
 router.route("/")
     .post(userControllers.postUser)
-    .get(userControllers.getUsers);
+    .get(verifyToken, userControllers.getUsers);
 
 router.route("/id/:id")
-    .get(userControllers.getUserById);
+    .get(verifyToken, userControllers.getUserById);
 
 router.route("/email/:email")
-    .get(userControllers.getUserByEmail)
-    .patch(userControllers.updateUserByEmail)
-    .delete(userControllers.deleteUserByEmail);
+    .get(verifyToken, userControllers.getUserByEmail)
+    .patch(verifyToken, userControllers.updateUserByEmail)
+    .delete(verifyToken, userControllers.deleteUserByEmail);
 
 module.exports = router;
