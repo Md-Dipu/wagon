@@ -5,7 +5,8 @@ import {
     createUserWithEmailAndPassword,
     updateProfile,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    getIdToken
 } from "firebase/auth";
 import initializeFirebase from '../Pages/Authentication/Firebase/firebase.init';
 import { userAPI } from '../Utilities/API';
@@ -25,14 +26,21 @@ const useFirebase = () => {
 
     // observer user state
     React.useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, user => {
-            if (user) {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            try {
+                if (!user) {
+                    throw new Error('User not found!');
+                }
+
+                const token = await getIdToken(user);
+                sessionStorage.setItem('__idToken', token);
                 setUser(user);
-            }
-            else {
+            } catch (error) {
+                sessionStorage.removeItem('__idToken');
                 setUser(null);
+            } finally {
+                setIsLoading(false);
             }
-            setIsLoading(false);
         });
         return () => unsubscribe;
     }, [auth]);
