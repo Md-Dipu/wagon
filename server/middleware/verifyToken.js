@@ -1,6 +1,9 @@
+const dotenv = require("dotenv");
 const admin = require("firebase-admin");
 
 const { findUserByEmail } = require("../services/userServices");
+
+dotenv.config();
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
@@ -18,7 +21,7 @@ const verifyToken = async (req, res, next) => {
         const decodedUser = await admin.auth().verifyIdToken(idToken);
         const user = await findUserByEmail(decodedUser.email);
         req.user = {
-            ...decodedUser,
+            email: decodedUser.email,
             role: user.role
         };
         next();
