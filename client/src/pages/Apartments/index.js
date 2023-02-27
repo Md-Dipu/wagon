@@ -1,12 +1,12 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import useWindowDimensions from '../../../hooks/useWindowDimensions';
-import Footer from '../../Shared/Footer';
-import Loading from '../../Shared/Loading';
-import Navigation from '../../Shared/Navigation';
-import Banner from '../ApartmentsBanner/ApartmentsBanner';
-import ApartmentsContainer from '../ApartmentsContainer/ApartmentsContainer';
-import { apartmentAPI } from '../../../utils/API';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+import Footer from '../Shared/Footer';
+import Loading from '../Shared/Loading';
+import Navigation from '../Shared/Navigation';
+import Banner from './ApartmentsBanner';
+import ApartmentsContainer from './ApartmentsContainer';
+import { apartmentAPI } from '../../utils/API';
 
 const Apartments = () => {
     const [apartments, setApartments] = React.useState([]);
