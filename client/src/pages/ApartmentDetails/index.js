@@ -1,14 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Footer from '../../Shared/Footer';
-import Loading from '../../Shared/Loading';
-import Navigation from '../../Shared/Navigation';
-import BookNowModal from '../BookNowModal/BookNowModal';
-import DetailsBanner from '../DetailsBanner/DetailsBanner';
-import DetailsContainer from '../DetailsContainer/DetailsContainer';
-import RecentApartments from '../RecentApartments/RecentApartments';
-import SpecialContact from '../SpecialContact/SpecialContact';
-import { apartmentAPI } from '../../../utils/API';
+import Footer from '../Shared/Footer';
+import Loading from '../Shared/Loading';
+import Navigation from '../Shared/Navigation';
+import BookNowModal from './BookNowModal';
+import DetailsBanner from './DetailsBanner';
+import DetailsContainer from './DetailsContainer';
+import RecentApartments from './RecentApartments';
+import SpecialContact from './SpecialContact';
+import { apartmentAPI } from '../../utils/API';
 
 const ApartmentDetails = () => {
     const [apartmentData, setApartmentData] = React.useState({});
