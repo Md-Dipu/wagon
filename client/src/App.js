@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AuthProvider from "./Context/AuthContext";
+import AuthProvider from "./context/AuthContext";
 import ApartmentDetails from "./Pages/ApartmentDetails/ApartmentDetails/ApartmentDetails";
 import Apartments from "./Pages/Apartments/Apartments/Apartments";
 import Login from "./Pages/Authentication/Login/Login";
