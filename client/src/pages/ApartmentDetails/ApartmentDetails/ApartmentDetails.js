@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../../Shared/Footer';
 import Loading from '../../Shared/Loading';
-import Navigation from '../../Shared/Navigation/Navigation';
+import Navigation from '../../Shared/Navigation';
 import BookNowModal from '../BookNowModal/BookNowModal';
 import DetailsBanner from '../DetailsBanner/DetailsBanner';
 import DetailsContainer from '../DetailsContainer/DetailsContainer';

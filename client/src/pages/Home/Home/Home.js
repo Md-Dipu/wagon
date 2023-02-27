@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../../Shared/Footer';
-import Navigation from '../../Shared/Navigation/Navigation';
+import Navigation from '../../Shared/Navigation';
 import About from '../AboutSummary/AboutSummary';
 import Apartments from '../HomeApartments/HomeApartments';
 import Banner from '../HomeBanner/HomeBanner';
