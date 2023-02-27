@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import AdminTable from '../AdminTable/AdminTable';
-import { userAPI } from '../../../Utilities/API';
+import { userAPI } from '../../../utils/API';
 
 const MakeAdmin = () => {
     const [stateObserver, setStateObserver] = React.useState(0); // number: observing change every time

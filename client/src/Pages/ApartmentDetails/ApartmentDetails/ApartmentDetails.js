@@ -8,7 +8,7 @@ import DetailsBanner from '../DetailsBanner/DetailsBanner';
 import DetailsContainer from '../DetailsContainer/DetailsContainer';
 import RecentApartments from '../RecentApartments/RecentApartments';
 import SpecialContact from '../SpecialContact/SpecialContact';
-import { apartmentAPI } from '../../../Utilities/API';
+import { apartmentAPI } from '../../../utils/API';
 
 const ApartmentDetails = () => {
     const [apartmentData, setApartmentData] = React.useState({});

@@ -9,8 +9,8 @@ import {
     getIdToken
 } from "firebase/auth";
 import initializeFirebase from '../Pages/Authentication/Firebase/firebase.init';
-import { userAPI } from '../Utilities/API';
-import redirect from '../Utilities/redirect';
+import { userAPI } from '../utils/API';
+import redirect from '../utils/redirect';
 
 // initialize firebase app
 initializeFirebase();

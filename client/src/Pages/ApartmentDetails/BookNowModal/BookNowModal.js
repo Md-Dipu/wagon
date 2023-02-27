@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
-import { bookingAPI } from '../../../Utilities/API';
+import { bookingAPI } from '../../../utils/API';
 
 const BookNowModal = (props) => {
     const { show, onCloseModal, apartment } = props;

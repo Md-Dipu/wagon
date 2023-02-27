@@ -5,7 +5,7 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReactStars from 'react-rating-stars-component';
 import useAuth from '../../../hooks/useAuth';
-import { reviewAPI } from '../../../Utilities/API';
+import { reviewAPI } from '../../../utils/API';
 
 const MyReview = () => {
     const [rating, setRating] = React.useState(0);

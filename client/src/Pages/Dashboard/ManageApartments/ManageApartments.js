@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
-import { apartmentAPI } from '../../../Utilities/API';
+import { apartmentAPI } from '../../../utils/API';
 
 const ManageApartments = () => {
     const [allApartments, setAllApartments] = React.useState([]);

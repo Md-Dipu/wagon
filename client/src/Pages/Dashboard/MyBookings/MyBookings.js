@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
-import { bookingAPI } from '../../../Utilities/API';
+import { bookingAPI } from '../../../utils/API';
 
 const MyBookings = () => {
     const [bookings, setBookings] = React.useState([]);

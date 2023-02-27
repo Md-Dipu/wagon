@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Apartment from '../../Shared/Apartment/Apartment';
-import { apartmentAPI } from '../../../Utilities/API';
+import { apartmentAPI } from '../../../utils/API';
 
 const RecentApartments = () => {
     const [recentApartments, setRecentApartments] = React.useState([]);

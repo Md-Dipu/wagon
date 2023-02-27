@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Apartment from '../../Shared/Apartment/Apartment';
-import { apartmentAPI } from '../../../Utilities/API';
+import { apartmentAPI } from '../../../utils/API';
 import './HomeApartments.css';
 
 const HomeApartments = () => {

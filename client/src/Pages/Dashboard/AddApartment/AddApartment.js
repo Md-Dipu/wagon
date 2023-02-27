@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { apartmentAPI } from '../../../Utilities/API';
+import { apartmentAPI } from '../../../utils/API';
 
 const AddApartment = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();

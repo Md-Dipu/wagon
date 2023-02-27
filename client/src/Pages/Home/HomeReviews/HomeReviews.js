@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { reviewAPI } from '../../../Utilities/API';
+import { reviewAPI } from '../../../utils/API';
 import './HomeReviews.css';
 
 const HomeReviews = () => {

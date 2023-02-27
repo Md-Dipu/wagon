@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Table } from 'react-bootstrap';
-import { userAPI } from '../../../Utilities/API';
+import { userAPI } from '../../../utils/API';
 
 const AdminTable = ({ observer }) => {
     const [adminUsers, setAdminUsers] = React.useState([]);

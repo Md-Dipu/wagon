@@ -6,7 +6,7 @@ import Loading from '../../Shared/Loading/Loading';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../ApartmentsBanner/ApartmentsBanner';
 import ApartmentsContainer from '../ApartmentsContainer/ApartmentsContainer';
-import { apartmentAPI } from '../../../Utilities/API';
+import { apartmentAPI } from '../../../utils/API';
 
 const Apartments = () => {
     const [apartments, setApartments] = React.useState([]);
