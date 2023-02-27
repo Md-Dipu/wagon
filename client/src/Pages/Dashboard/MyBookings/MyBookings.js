@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 import { bookingAPI } from '../../../Utilities/API';
 
 const MyBookings = () => {

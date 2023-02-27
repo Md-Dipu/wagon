@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 import redirect from '../../../Utilities/redirect';
 import Home from '../DashboardHome/DashboardHome';
 import SideNav from '../DashboardSideNav/DashboardSideNav';

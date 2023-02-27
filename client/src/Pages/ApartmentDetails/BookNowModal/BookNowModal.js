@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 import { bookingAPI } from '../../../Utilities/API';
 
 const BookNowModal = (props) => {

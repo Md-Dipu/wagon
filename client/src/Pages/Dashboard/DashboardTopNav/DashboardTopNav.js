@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faBars } from '@fortawesome/free-solid-svg-icons';
-import useWindowDimensions from '../../../Hooks/useWindowDimensions';
-import useAuth from '../../../Hooks/useAuth';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import useAuth from '../../../hooks/useAuth';
 
 const DashboardTopNav = ({ showCanvas }) => {
     const [displayMobileMenu, setDisplayMobileMenu] = React.useState(false);

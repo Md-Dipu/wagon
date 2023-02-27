@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import useWindowDimensions from '../../../Hooks/useWindowDimensions';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Apartment from '../../Shared/Apartment/Apartment';
 import { apartmentAPI } from '../../../Utilities/API';
 

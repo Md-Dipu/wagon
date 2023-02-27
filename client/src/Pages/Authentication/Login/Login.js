@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import DarkNav from '../../Shared/DarkNav/DarkNav';
 import Footer from '../../Shared/Footer/Footer';
 import LoginForm from '../LoginForm/LoginForm';
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
     const { logIn } = useAuth();

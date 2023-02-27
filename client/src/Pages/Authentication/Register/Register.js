@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Footer from '../../Shared/Footer/Footer';
 import DarkNav from '../../Shared/DarkNav/DarkNav';
 import RegisterForm from '../RegisterForm/RegisterForm';
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
     const { register } = useAuth();

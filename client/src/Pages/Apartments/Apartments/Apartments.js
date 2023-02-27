@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import useWindowDimensions from '../../../Hooks/useWindowDimensions';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Footer from '../../Shared/Footer/Footer';
 import Loading from '../../Shared/Loading/Loading';
 import Navigation from '../../Shared/Navigation/Navigation';

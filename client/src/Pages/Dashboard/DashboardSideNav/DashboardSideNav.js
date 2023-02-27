@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup } from 'react-bootstrap';
 import './DashboardSideNav.css';
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const DashboardSideNav = ({ url, closeOffCanvas = () => { } }) => {
     const { admin } = useAuth();
