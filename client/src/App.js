@@ -7,7 +7,7 @@ import PrivateRoute from "./pages/Authentication/PrivateRoute/PrivateRoute";
 import Register from "./pages/Authentication/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import NotFound from "./pages/NotFound";
-import Home from "./pages/Home/Home/Home";
+import Home from "./pages/Home";
 
 const App = () => {
     return (
