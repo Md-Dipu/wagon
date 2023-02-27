@@ -3,19 +3,27 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Wagon is built using the popular MERN Stack technologies. This demo website is a full-stack website. It is built for the purpose of learning `React`, `Node.js`, `MongoDB`, and others tools and development packages.
+Wagon is an apartment seal website made with MERN Stack technologies. Maintaining apartments, booking and users is the main key of the website.
 
-> **Demo:** This project is deployed using the 
-> firebase hosting service. To visit the demo 
-> [Click](https://wagon-apartments-sales.web.app/)
-> here or manually visit the URL 
-> https://wagon-apartments-sales.web.app/.
+### Live Demo
+
+This project is deployed using the firebase hosting service. To visit the demo [Click](https://wagon-apartments-sales.web.app/) here or manually visit the URL https://wagon-apartments-sales.web.app/.
+
+#### Demo Accounts
+
+| Role | Email | Password |
+| ------ | ------ | ------ |
+| Admin | admin@wagon.com | Admin1234# |
+| User | demo@wagon.com | Demo1234# |
+
+> **Note:** The website may be slow because of the free hosting server.
 
 ## Features
 
 - Dynamic website
 - Responsive webpages
 - REST API
+- Authentication and authorization
 - Apartments, bookings and reviews management
 - Email and password authentication system
 - User and role management
@@ -102,6 +110,7 @@ Enter all variables in the `server/.env` file.
 
 | Variables | Description |
 | ------ | ------ |
+| FIREBASE_SERVICE_ACCOUNT | Firebase service account private key |
 | MONGODB_URI | Mongodb connection string |
 | PORT | Port number for local server |
 
