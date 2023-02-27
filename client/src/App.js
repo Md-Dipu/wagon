@@ -6,7 +6,7 @@ import Login from "./pages/Authentication/Login/Login";
 import PrivateRoute from "./pages/Authentication/PrivateRoute/PrivateRoute";
 import Register from "./pages/Authentication/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
-import NotFound from "./pages/NotFound/NotFound";
+import NotFound from "./pages/NotFound";
 import Home from "./pages/Home/Home/Home";
 
 const App = () => {
