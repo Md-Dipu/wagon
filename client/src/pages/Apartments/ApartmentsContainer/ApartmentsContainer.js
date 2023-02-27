@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
-import Apartment from '../../Shared/Apartment/Apartment';
+import Apartment from '../../Shared/Apartment';
 
 const ApartmentsContainer = (props) => {
     const { apartments, count, setCurrentPage, setPageLoading, limit, currentPage, observer } = props;

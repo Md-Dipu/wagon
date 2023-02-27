@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
-import Apartment from '../../Shared/Apartment/Apartment';
+import Apartment from '../../Shared/Apartment';
 import { apartmentAPI } from '../../../utils/API';
 
 const RecentApartments = () => {
