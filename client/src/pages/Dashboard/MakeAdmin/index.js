@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import AdminTable from '../AdminTable/AdminTable';
+import AdminTable from '../AdminTable';
 import { userAPI } from '../../../utils/API';
 
 const MakeAdmin = () => {

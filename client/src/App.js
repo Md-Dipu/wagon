@@ -5,7 +5,7 @@ import Apartments from "./pages/Apartments";
 import Login from "./pages/Authentication/Login";
 import PrivateRoute from "./pages/Authentication/PrivateRoute";
 import Register from "./pages/Authentication/Register";
-import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 

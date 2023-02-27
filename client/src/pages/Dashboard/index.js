@@ -1,21 +1,21 @@
 import React from 'react';
 import { Switch, Route, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
-import useAuth from '../../../hooks/useAuth';
-import redirect from '../../../utils/redirect';
-import Home from '../DashboardHome/DashboardHome';
-import SideNav from '../DashboardSideNav/DashboardSideNav';
-import TopNav from '../DashboardTopNav/DashboardTopNav';
-import MobileOffCanvas from '../DashboardMobileOffCanvas/DashBoardMobileOffCanvas';
-import MakeAdmin from '../MakeAdmin/MakeAdmin';
-import AdminRoute from '../../Authentication/AdminRoute';
-import AddApartment from '../AddApartment/AddApartment';
-import MyBookings from '../MyBookings/MyBookings';
-import PayNow from '../PayNow/PayNow';
-import ManageApartments from '../ManageApartments/ManageApartments';
-import ManageAllBooking from '../ManageAllBooking/ManageAllBooking';
-import MyReview from '../MyReview/MyReview';
-import NotFound from '../DashboardNotFound/DashboardNotFound';
+import useAuth from '../../hooks/useAuth';
+import redirect from '../../utils/redirect';
+import Home from './DashboardHome';
+import SideNav from './DashboardSideNav';
+import TopNav from './DashboardTopNav';
+import MobileOffCanvas from './DashboardMobileOffCanvas';
+import MakeAdmin from './MakeAdmin';
+import AdminRoute from '../Authentication/AdminRoute';
+import AddApartment from './AddApartment';
+import MyBookings from './MyBookings';
+import PayNow from './PayNow';
+import ManageApartments from './ManageApartments';
+import ManageAllBooking from './ManageAllBooking';
+import MyReview from './MyReview';
+import NotFound from './DashboardNotFound';
 import './Dashboard.css';
 
 const Dashboard = () => {

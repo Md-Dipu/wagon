@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Offcanvas } from 'react-bootstrap';
-import DashboardSideNav from '../DashboardSideNav/DashboardSideNav';
+import DashboardSideNav from '../DashboardSideNav';
 
 const DashBoardMobileOffCanvas = ({ show, handleClose, url }) => {
     return (
