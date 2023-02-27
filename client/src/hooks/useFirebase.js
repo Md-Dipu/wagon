@@ -8,7 +8,7 @@ import {
     signOut,
     getIdToken
 } from "firebase/auth";
-import initializeFirebase from '../Pages/Authentication/Firebase/firebase.init';
+import initializeFirebase from '../pages/Authentication/Firebase/firebase.init';
 import { userAPI } from '../utils/API';
 import redirect from '../utils/redirect';
 

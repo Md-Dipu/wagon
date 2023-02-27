@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthProvider from "./context/AuthContext";
-import ApartmentDetails from "./Pages/ApartmentDetails/ApartmentDetails/ApartmentDetails";
-import Apartments from "./Pages/Apartments/Apartments/Apartments";
-import Login from "./Pages/Authentication/Login/Login";
-import PrivateRoute from "./Pages/Authentication/PrivateRoute/PrivateRoute";
-import Register from "./Pages/Authentication/Register/Register";
-import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
-import NotFound from "./Pages/NotFound/NotFound";
-import Home from "./Pages/Home/Home/Home";
+import ApartmentDetails from "./pages/ApartmentDetails/ApartmentDetails/ApartmentDetails";
+import Apartments from "./pages/Apartments/Apartments/Apartments";
+import Login from "./pages/Authentication/Login/Login";
+import PrivateRoute from "./pages/Authentication/PrivateRoute/PrivateRoute";
+import Register from "./pages/Authentication/Register/Register";
+import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import NotFound from "./pages/NotFound/NotFound";
+import Home from "./pages/Home/Home/Home";
 
 const App = () => {
     return (
