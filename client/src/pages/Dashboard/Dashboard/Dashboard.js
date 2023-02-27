@@ -8,7 +8,7 @@ import SideNav from '../DashboardSideNav/DashboardSideNav';
 import TopNav from '../DashboardTopNav/DashboardTopNav';
 import MobileOffCanvas from '../DashboardMobileOffCanvas/DashBoardMobileOffCanvas';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
-import AdminRoute from '../../Authentication/AdminRoute/AdminRoute';
+import AdminRoute from '../../Authentication/AdminRoute';
 import AddApartment from '../AddApartment/AddApartment';
 import MyBookings from '../MyBookings/MyBookings';
 import PayNow from '../PayNow/PayNow';
