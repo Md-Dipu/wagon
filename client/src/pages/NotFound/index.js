@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { Button } from 'react-bootstrap';
-import DarkNav from '../Shared/DarkNav/DarkNav';
+import DarkNav from '../Shared/DarkNav';
 import Footer from '../Shared/Footer/Footer';
 import './NotFound.css';
 
