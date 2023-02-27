@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
 import DarkNav from '../../Shared/DarkNav';
-import Footer from '../../Shared/Footer/Footer';
+import Footer from '../../Shared/Footer';
 import LoginForm from '../LoginForm/LoginForm';
 import useAuth from '../../../hooks/useAuth';
 

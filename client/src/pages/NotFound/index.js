@@ -2,7 +2,7 @@ import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { Button } from 'react-bootstrap';
 import DarkNav from '../Shared/DarkNav';
-import Footer from '../Shared/Footer/Footer';
+import Footer from '../Shared/Footer';
 import './NotFound.css';
 
 const NotFound = () => {

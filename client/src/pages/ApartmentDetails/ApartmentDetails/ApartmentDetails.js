@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Footer from '../../Shared/Footer/Footer';
+import Footer from '../../Shared/Footer';
 import Loading from '../../Shared/Loading/Loading';
 import Navigation from '../../Shared/Navigation/Navigation';
 import BookNowModal from '../BookNowModal/BookNowModal';
