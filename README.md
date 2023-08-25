@@ -95,12 +95,12 @@ Enter all variables in the `client/.env.local` file.
 
 | Variables | Description |
 | ------ | ------ |
-| REACT_APP_FIREBASE_APIKEY | Firebase api key |
-| REACT_APP_FIREBASE_AUTHDOMAIN | Firebase auth domain |
-| REACT_APP_FIREBASE_PROJECTID | Firebase project ID |
-| REACT_APP_FIREBASE_STORAGEBUCKET | Firebase storage bucket |
-| REACT_APP_FIREBASE_MESSAGINGSENDERID | Firebase messaging sender ID |
-| REACT_APP_FIREBASE_APPID | Firebase APP ID |
+| REACT_APP_API_KEY | Firebase api key |
+| REACT_APP_AUTH_DOMAIN | Firebase auth domain |
+| REACT_APP_PROJECT_ID | Firebase project ID |
+| REACT_APP_STORAGE_BUCKET | Firebase storage bucket |
+| REACT_APP_MESSAGING_SENDER_ID | Firebase messaging sender ID |
+| REACT_APP_APP_ID | Firebase APP ID |
 | REACT_APP_SERVER_BACKEND_API_URL | Server side URL |
 
 
