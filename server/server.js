@@ -1,10 +1,11 @@
 const colors = require("colors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const app = require("./app");
 
-dotenv.config();
+dotenv.config({ path: path.join(process.cwd(), ".env") });
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGODB_URI).then(() => {

@@ -1,9 +1,10 @@
 const dotenv = require("dotenv");
 const admin = require("firebase-admin");
+const path = require("path");
 
 const { findUserByEmail } = require("../services/userServices");
 
-dotenv.config();
+dotenv.config({ path: path.join(process.cwd(), ".env") });
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
