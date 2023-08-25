@@ -12,6 +12,10 @@
 # cache
 /.firebase
 
+# IDE
+/.vscode
+/.idea
+
 # misc
 .DS_Store
 .env.local
