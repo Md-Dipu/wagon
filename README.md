@@ -1,7 +1,7 @@
-# Wagon
-## _Apartments sales website_
+# Wagon: Apartments Sales Website
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Md-Dipu/wagon)
+![GitHub](https://img.shields.io/github/license/Md-Dipu/wagon)
 
 Wagon is an apartment seal website made with MERN Stack technologies. Maintaining apartments, booking and users is the main key of the website.
 
@@ -11,10 +11,10 @@ This project is deployed using the firebase hosting service. To visit the demo [
 
 #### Demo Accounts
 
-| Role | Email | Password |
-| ------ | ------ | ------ |
+| Role  | Email           | Password   |
+| ----- | --------------- | ---------- |
 | Admin | admin@wagon.com | Admin1234# |
-| User | demo@wagon.com | Demo1234# |
+| User  | demo@wagon.com  | Demo1234#  |
 
 > **Note:** The website may be slow because of the free hosting server.
 
@@ -28,13 +28,14 @@ This project is deployed using the firebase hosting service. To visit the demo [
 - Email and password authentication system
 - User and role management
 
-This website is a fully responsive application. Attempts have been made to implement all basic concepts/services. 
+This website is a fully responsive application. Attempts have been made to implement all basic concepts/services.
 
 ## Tech
 
 This project uses a number of open-source projects/packages to work properly:
 
 ### _Frontend_
+
 - [Axios](https://axios-http.com/) - Promise based HTTP client for the browser and node.js.
 - [Bootstrap](https://getbootstrap.com/) - Bootstrap is a powerful, feature-packed frontend toolkit.
 - [Firebase](https://firebase.google.com/) - Firebase is an app development platform that helps to build apps and games.
@@ -46,6 +47,7 @@ This project uses a number of open-source projects/packages to work properly:
 - [React-router](https://reactrouter.com/) - React Router is a standard library for routing in React.
 
 ### _Backend_
+
 - [Colors](https://github.com/Marak/colors.js) - get colors in your node.js console.
 - [CORS](https://github.com/expressjs/cors#readme) - Node.js CORS middleware.
 - [Dotenv](https://github.com/motdotla/dotenv#readme) - Loads environment variables from .env for nodejs projects.
@@ -55,35 +57,37 @@ This project uses a number of open-source projects/packages to work properly:
 
 ## Installation and Development
 
-Wagon requires [Node.js](https://nodejs.org/) v10+ to run.
+Wagon requires [Node.js](https://nodejs.org/) v10+ to run. It is recommended to use [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions.
 
-Install the dependencies and devDependencies and start.
+### Setup
 
-### _Frontend_
+1. Clone the repository:
 
-```sh
-# client
-cd wagon/client/
-npm install
-npm start
-```
+   ```sh
+   git clone https://github.com/Md-Dipu/wagon.git
+   cd wagon
+   ```
 
-### _Backend_
+2. Use nvm to install and use the required Node.js version:
 
-```sh
-# server
-cd wagon/server/
-npm install
-```
+   ```sh
+   nvm use
+   # If the above command fails, run the following:
+   nvm install
+   nvm use
+   ```
 
-For development environments...
+3. Install the dependencies:
 
-```sh
-npm run dev
+   ```sh
+   npm install
+   ```
 
-# or
-nodemon server.js
-```
+4. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
 
 ### Environment variables
 
@@ -93,25 +97,24 @@ Before starting, the servers must set up some environment variables on both the 
 
 Enter all variables in the `client/.env.local` file.
 
-| Variables | Description |
-| ------ | ------ |
-| REACT_APP_API_KEY | Firebase api key |
-| REACT_APP_AUTH_DOMAIN | Firebase auth domain |
-| REACT_APP_PROJECT_ID | Firebase project ID |
-| REACT_APP_STORAGE_BUCKET | Firebase storage bucket |
-| REACT_APP_MESSAGING_SENDER_ID | Firebase messaging sender ID |
-| REACT_APP_APP_ID | Firebase APP ID |
-| REACT_APP_SERVER_BACKEND_API_URL | Server side URL |
-
+| Variables                        | Description                  |
+| -------------------------------- | ---------------------------- |
+| REACT_APP_API_KEY                | Firebase api key             |
+| REACT_APP_AUTH_DOMAIN            | Firebase auth domain         |
+| REACT_APP_PROJECT_ID             | Firebase project ID          |
+| REACT_APP_STORAGE_BUCKET         | Firebase storage bucket      |
+| REACT_APP_MESSAGING_SENDER_ID    | Firebase messaging sender ID |
+| REACT_APP_APP_ID                 | Firebase APP ID              |
+| REACT_APP_SERVER_BACKEND_API_URL | Server side URL              |
 
 #### _Backend_
 
 Enter all variables in the `server/.env` file.
 
-| Variables | Description |
-| ------ | ------ |
+| Variables                | Description                          |
+| ------------------------ | ------------------------------------ |
 | FIREBASE_SERVICE_ACCOUNT | Firebase service account private key |
-| MONGODB_URI | Mongodb connection string |
-| PORT | Port number for local server |
+| MONGODB_URI              | Mongodb connection string            |
+| PORT                     | Port number for local server         |
 
-**Thank you!**
+We appreciate your interest in Wagon. If you have any questions or need further assistance, please feel free to reach out to us. **Happy coding!**
