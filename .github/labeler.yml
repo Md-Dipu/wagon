@@ -1,0 +1,163 @@
+# Label any file change in the repository root
+root:
+  - changed-files:
+      - any-glob-to-any-file: '*'
+
+# Label any change in the entire repository
+AnyChange:
+  - changed-files:
+      - any-glob-to-any-file: '**'
+
+# Label documentation-related changes:
+# - Files under the 'docs' and 'guides' directories
+# - Any Markdown file anywhere in the repo
+Documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'docs/**'
+          - 'guides/**'
+          - '**/*.md'
+
+# Label changes in client-side code (React components, utilities, etc.)
+client:
+  - changed-files:
+      - any-glob-to-any-file: 'client/src/**'
+
+# Label changes in server-side code (Express & MongoDB related)
+server:
+  - changed-files:
+      - any-glob-to-any-file: 'server/src/**'
+
+# Label changes in test files (for both client and server tests)
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'client/tests/**'
+          - 'server/tests/**'
+          - 'tests/**'
+
+# Label configuration file changes (e.g. package files, build configs, and linting)
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'package.json'
+          - 'package-lock.json'
+          - '*.config.js'
+          - 'client/package.json'
+          - 'server/package.json'
+          - '.eslintrc*'
+          - '.prettierrc*'
+
+# Label styling changes (CSS, SCSS, and Bootstrap-related updates)
+styles:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'client/**/*.css'
+          - 'client/**/*.scss'
+
+# Label CI/CD related changes, including GitHub Actions workflows
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/workflows/**'
+
+# Label dependency update changes (affecting lockfiles and package definitions)
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'package.json'
+          - 'package-lock.json'
+          - 'client/package.json'
+          - 'server/package.json'
+
+# Label PRs for feature work based on the head branch name containing or starting with "feature"
+feature:
+  - head-branch:
+      - '^feature'
+      - 'feature'
+
+# Label PRs intended for release when the base branch is 'main'
+release:
+  - base-branch: 'main'
+
+# Label bugfix-related PRs
+bugfix:
+  - head-branch:
+      - '^bugfix'
+      - 'bugfix'
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'client/src/**'
+          - 'server/src/**'
+
+# Label hotfix-related PRs
+hotfix:
+  - head-branch:
+      - '^hotfix'
+      - 'hotfix'
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'client/src/**'
+          - 'server/src/**'
+
+# Label improvements or enhancements
+improvement:
+  - head-branch:
+      - '^improvement'
+      - 'improvement'
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'client/src/**'
+          - 'server/src/**'
+
+# Label core functionality updates (significant architectural or major refactors)
+core:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'server/src/core/**'
+          - 'client/src/core/**'
+          - 'server/src/middleware/**'
+
+# Label security-related changes (e.g., authentication, security patches)
+security:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'server/src/auth/**'
+          - 'server/src/security/**'
+          - 'client/src/auth/**'
+          - '**/auth/**'
+          - '**/security/**'
+
+# Label database changes (Migrations, schema updates, DB queries)
+database:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'server/src/db/**'
+          - 'server/src/models/**'
+          - 'server/src/migrations/**'
+
+# Label refactoring (significant code restructuring without adding features)
+refactor:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'client/src/**'
+          - 'server/src/**'
+  - head-branch:
+      - '^refactor'
+      - 'refactor'
+
+# Label experimental features under testing
+experimental:
+  - head-branch:
+      - '^experimental'
+      - 'experimental'
+
+# Label performance-related optimizations
+performance:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'client/src/**'
+          - 'server/src/**'
+  - head-branch:
+      - '^perf'
+      - 'performance'
