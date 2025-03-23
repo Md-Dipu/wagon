@@ -20,9 +20,14 @@ build/
 .DS_Store
 
 # Environment variables
-.env*
+client/**/.env*.local
+server/**/.env*
 
 # Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# NX cache directories
+.nx/cache
+.nx/workspace-data

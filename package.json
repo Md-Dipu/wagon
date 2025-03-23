@@ -7,9 +7,18 @@
     "name": "Md. Dipu",
     "email": "srdipu@hotmail.com"
   },
-  "scripts": {},
+  "scripts": {
+    "dev": "nx run-many --target=dev --all",
+    "build": "nx run-many --target=build --all"
+  },
   "workspaces": [
     "client",
     "server"
-  ]
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/eslint": "20.6.2",
+    "eslint": "~8.57.0",
+    "nx": "20.6.2"
+  }
 }
