@@ -1,0 +1,28 @@
+# Dependency directories
+node_modules/
+.pnp
+.pnp.js
+
+# Testing output
+coverage/
+
+# Production build output
+build/
+
+# Cache files
+.firebase/
+
+# IDE configurations
+.vscode/*
+.idea/
+
+# Miscellaneous
+.DS_Store
+
+# Environment variables
+.env*
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
