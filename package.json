@@ -1,0 +1,15 @@
+{
+  "name": "@wagon/source",
+  "description": "Wagon - Apartments Sales Website",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Md. Dipu",
+    "email": "srdipu@hotmail.com"
+  },
+  "scripts": {},
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
