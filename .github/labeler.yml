@@ -1,149 +1,154 @@
 # Label any file change in the repository root
 root:
   - changed-files:
-      - '*'
+      - any-glob-to-any-file: "*"
 
 # Label any change in the entire repository
 AnyChange:
   - changed-files:
-      - '**'
+      - any-glob-to-any-file: "**"
 
 # Label documentation-related changes:
 # - Files under the 'docs' and 'guides' directories
 # - Any Markdown file anywhere in the repo
 Documentation:
   - changed-files:
-      - 'docs/**'
-      - 'guides/**'
-      - '**/*.md'
+      - any-glob-to-any-file:
+          - "docs/**"
+          - "guides/**"
+          - "**/*.md"
 
 # Label changes in client-side code (React components, utilities, etc.)
 client:
   - changed-files:
-      - 'client/**'
+      - any-glob-to-any-file: "client/**"
 
 # Label changes in server-side code (Express & MongoDB related)
 server:
   - changed-files:
-      - 'server/**'
-
-# Label changes in test files (for both client and server tests)
-tests:
-  - changed-files:
-      - 'client/tests/**'
-      - 'server/tests/**'
-      - 'tests/**'
+      - any-glob-to-any-file: "server/**"
 
 # Label configuration file changes (e.g. package files, build configs, and linting)
 config:
   - changed-files:
-      - 'package.json'
-      - 'package-lock.json'
-      - '*.config.js'
-      - 'client/package.json'
-      - 'server/package.json'
-      - '.eslintrc*'
-      - '.prettierrc*'
+      - any-glob-to-any-file:
+          - "package.json"
+          - "package-lock.json"
+          - "*.config.js"
+          - "client/package.json"
+          - "server/package.json"
+          - ".eslintrc*"
+          - ".prettierrc*"
 
 # Label styling changes (CSS, SCSS, and Bootstrap-related updates)
 styles:
   - changed-files:
-      - 'client/**/*.css'
-      - 'client/**/*.scss'
+      - any-glob-to-any-file:
+          - "client/**/*.css"
 
 # Label CI/CD related changes, including GitHub Actions workflows
 ci:
   - changed-files:
-      - '.github/workflows/**'
+      - any-glob-to-any-file:
+          - ".github/workflows/**"
 
 # Label dependency update changes (affecting lockfiles and package definitions)
 dependencies:
   - changed-files:
-      - 'package.json'
-      - 'package-lock.json'
-      - 'client/package.json'
-      - 'server/package.json'
+      - any-glob-to-any-file:
+          - "package.json"
+          - "package-lock.json"
+          - "client/package.json"
+          - "server/package.json"
 
 # Label PRs for feature work based on the head branch name containing or starting with "feature"
 feature:
   - head-branch:
-      - '^feature'
-      - 'feature'
+      - "^feature"
+      - "feature"
 
 # Label PRs intended for release when the base branch is 'main'
 release:
-  - base-branch: 'main'
+  - base-branch: "main"
 
 # Label bugfix-related PRs
 bugfix:
   - head-branch:
-      - '^bugfix'
-      - 'bugfix'
+      - "^bugfix"
+      - "bugfix"
   - changed-files:
-      - 'client/**'
-      - 'server/**'
+      - any-glob-to-any-file:
+          - "client/**"
+          - "server/**"
 
 # Label hotfix-related PRs
 hotfix:
   - head-branch:
-      - '^hotfix'
-      - 'hotfix'
+      - "^hotfix"
+      - "hotfix"
   - changed-files:
-      - 'client/**'
-      - 'server/**'
+      - any-glob-to-any-file:
+          - "client/**"
+          - "server/**"
 
 # Label improvements or enhancements
 improvement:
   - head-branch:
-      - '^improvement'
-      - 'improvement'
+      - "^improvement"
+      - "improvement"
   - changed-files:
-      - 'client/**'
-      - 'server/**'
+      - any-glob-to-any-file:
+          - "client/**"
+          - "server/**"
 
 # Label core functionality updates (significant architectural or major refactors)
 core:
   - changed-files:
-      - 'server/core/**'
-      - 'client/core/**'
-      - 'server/middleware/**'
+      - any-glob-to-any-file:
+          - "server/core/**"
+          - "client/core/**"
+          - "server/middleware/**"
 
 # Label security-related changes (e.g., authentication, security patches)
 security:
   - changed-files:
-      - 'server/auth/**'
-      - 'server/security/**'
-      - 'client/auth/**'
-      - '**/auth/**'
-      - '**/security/**'
+      - any-glob-to-any-file:
+          - "server/auth/**"
+          - "server/security/**"
+          - "client/auth/**"
+          - "**/auth/**"
+          - "**/security/**"
 
 # Label database changes (Migrations, schema updates, DB queries)
 database:
   - changed-files:
-      - 'server/db/**'
-      - 'server/models/**'
-      - 'server/migrations/**'
+      - any-glob-to-any-file:
+          - "server/db/**"
+          - "server/models/**"
+          - "server/migrations/**"
 
 # Label refactoring (significant code restructuring without adding features)
 refactor:
   - changed-files:
-      - 'client/**'
-      - 'server/**'
+      - any-glob-to-any-file:
+          - "client/**"
+          - "server/**"
   - head-branch:
-      - '^refactor'
-      - 'refactor'
+      - "^refactor"
+      - "refactor"
 
 # Label experimental features under testing
 experimental:
   - head-branch:
-      - '^experimental'
-      - 'experimental'
+      - "^experimental"
+      - "experimental"
 
 # Label performance-related optimizations
 performance:
   - changed-files:
-      - 'client/**'
-      - 'server/**'
+      - any-glob-to-any-file:
+          - "client/**"
+          - "server/**"
   - head-branch:
-      - '^perf'
-      - 'performance'
+      - "^perf"
+      - "performance"
